@@ -14,7 +14,7 @@
                     <ul class="items clearfix">
                     	@foreach (Shpcart::cart()->contents() as $key => $cart)
                         <li>
-                            <a href="single.html" class="item-name">{{$cart['name']}}</a>
+                            <a href="#" class="item-name">{{$cart['name']}}</a>
                             <span class="item-price">{{ jadiRupiah($cart['qty'] * $cart['price'])}}</span>
                             <div class="clearfix"></div>
                         </li>

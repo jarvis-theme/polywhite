@@ -77,7 +77,7 @@
 				<div class="tab-pane animated animation-done rollIn active" data-animation="rollIn" id="top">
 				@foreach(list_product() as $key=>$myproduk)
 					@if($key < 12)
-					<div class="col-xs-12 col-sm-6 col-lg-2 products-container">
+					<div class="col-xs-12 col-sm-6 col-lg-3 products-container">
 						<div class="product">
 							<a href="{{product_url($myproduk)}}" class="product-link clearfix">
 								<div class="product-thumbnail" style="min-height:123px">
@@ -123,7 +123,7 @@
 							<li>
 								<div class="product">
 									<a href="{{URL::to($banner->url)}}" class="product-link clearfix">
-										<div class="product-thumbnail">
+										<div class="">
 											{{HTML::image(banner_image_url($banner->gambar),'banner')}}
 										</div>
 									</a>

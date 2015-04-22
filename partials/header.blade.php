@@ -85,13 +85,6 @@
                                         @foreach($anMenu as $key3=>$bug2)
                                         @if($bug2->parent==$submenu->id)
                                         <ul>
-                                            @foreach($anMenu as $key2=>$submenu2)
-                                                @if($submenu->id==$submenu2->parent)
-                                                <li>
-                                                    <a href="{{category_url($submenu2)}}">{{$submenu2->nama}}</a>
-                                                </li>
-                                                @endif
-                                            @endforeach
                                         </ul>
                                         @endif
                                         @endforeach
@@ -125,7 +118,7 @@
                                 <ul class="dl-submenu">
                                     @foreach($anMenu as $key1=>$submenu)
                                         @if($submenu->parent==$menu->id)
-                                            <li><a href="{{category_url($submenu2)}}">{{$submenu->nama}}</a></li>
+                                            <li><a href="">{{$submenu->nama}}</a></li>
                                         @elseif(++$i === $numItems)
                                             <li><a href="{{category_url($menu)}}">{{$menu->nama}}</a></li>
                                         @endif

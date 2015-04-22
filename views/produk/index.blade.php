@@ -38,18 +38,20 @@
                 <!-- CATEGORIES LIST -->
                 <div class="accordionmenu section">
                     <h4 class="section-title">Kategori</h4>
-                    @foreach(list_category() as $key=>$menu)
-                        @if($menu->parent=='0')
-                            <a class="menuitem submenuheader" href="#" >{{$menu->nama}}</a>
-                            @foreach(list_category() as $key=>$submenu)
-                                @if($menu->id==$submenu->parent)
-                                <div class="submenu">
+                    @foreach(category_menu() as $key=>$menu)
+                        @if($menu->parent == '0')
+                            <a class="menuitem submenuheader" href="{{category_url($menu)}}">{{$menu->nama}}</a>
+                            @if($menu->anak->count() != 0)
+                            <div class="submenu">
+                            @foreach($menu->anak as $key=>$submenu)
+                                @if($submenu->parent == $menu->id)
                                     <ul class="unstyled pretty-list arrow-list cl-effect-1">
                                         <li><a href="{{category_url($submenu)}}">{{$submenu->nama}}</a></li>
                                     </ul>
-                                </div>
                                 @endif
                             @endforeach
+                            </div>
+                            @endif
                         @endif
                     @endforeach
                 </div>
@@ -176,7 +178,7 @@
             
                 <div id="product-list-container" class="section offer products-container portrait three-column" data-layout="grid">
                     <div class="row">
-                        @foreach(list_product() as $myproduk)
+                        @foreach($produk as $myproduk)
                         <div class="mix col-xs-12 col-sm-6 col-lg-4">
                             <div class="product"  data-name="'Demo Product1'"   >
                                 <a href="{{product_url($myproduk)}}" class="product-link clearfix">
@@ -194,7 +196,7 @@
                                 
                                 <div class="product-info clearfix">
                                     <h4 style="text-align: left;" class="title">
-                                        <a href="{{product_url($myproduk)}}">{{$myproduk->nama}}</a>
+                                        <a href="{{product_url($myproduk)}}">{{short_description($myproduk->nama, 20)}}</a>
                                     </h4>
                                     @if($setting->checkoutType!=2)
                                     <div class="details">

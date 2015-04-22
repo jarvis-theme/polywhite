@@ -57,7 +57,7 @@ Terjadi kesalahan dalam menyimpan data.<br>
           <div class="section  module-list-items">
             <h4 class="section-title">Banner</h4>
             <div class="section-inner">
-                @foreach(horizontal_banner() as $key=>$banner)
+                @foreach(vertical_banner() as $key=>$banner)
                 <div class="section">
                     <div class="cat-image">
                         <a href="{{URL::to($banner->url)}}">

@@ -39,14 +39,14 @@
                 <div class="col-xs-12 col-sm-6 col-lg-3">
                     <div class="widget widget-contact">
                         <h4 class="widget-header">Contact Us</h4>
-                        <div class="widget-inner iconlist">
+                        <div class="widget-inner">
                         
                             <div class="media">
                                 <div class="pull-left">
                                     <i class="icon-location"></i>
                                 </div>
                                 <div class="media-body">
-                                    <p>{{@$kontak->alamat}}, <br/>{{@$kontak->kota->city}}, {{@$kontak->negara->country}} {{@$kontak->kodepos}}</p>
+                                    <p>{{@$kontak->alamat}}</p>
                                 </div>
                             </div>
                             <div class="media">
@@ -54,7 +54,15 @@
                                     <i class="icon-phone"></i>
                                 </div>
                                 <div class="media-body">
+                                    @if(empty($kontak->telepon) && empty($kontak->hp))
+                                    <p>-</p>
+                                    @elseif(empty($kontak->telepon) && !empty($kontak->hp))
+                                    <p>{{$kontak->hp}}</p>
+                                    @elseif(!empty($kontak->telepon) && empty($kontak->hp))
+                                    <p>{{$kontak->telepon}}</p>
+                                    @else
                                     <p>{{@$kontak->telepon}}<br/>{{@$kontak->hp}}</p>
+                                    @endif
                                 </div>
                             </div>
                             <div class="media">
@@ -114,13 +122,13 @@
         
             <div class="row">
             
-                <div class="col-xs-12 col-sm-6 copyright center-sm">
+                <div class="col-xs-12 col-sm-8 copyright center-sm">
                      Copyright &copy; {{date('Y')}} {{ Theme::place('title') }} | All Rights Reserved | Powered by <a style="text-decoration: none;" target="_blank" href="http://jarvis-store.com">Jarvis Store</a>
                 </div>
                 
                 <div class="col-xs-12 space10 visible-xs"></div>
                 
-                <div class="col-xs-12 col-sm-6 header-social-icons multicolor center-sm">
+                <div class="col-xs-12 col-sm-4 header-social-icons multicolor center-sm">
                     <ul>
                         @if($kontak->tw)
                         <li><a target="_blank" href="{{URL::to($kontak->tw)}}" ><i class="icon-twitter"></i></a></li>

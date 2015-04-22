@@ -79,7 +79,7 @@
                     <div class="col-xs-12 col-sm-6">
                       <div class="product-album" >
 
-                        <a href="#" class="jq-zoom" title="hover to zoom">
+                        <a href="#" class="" title="">
                           {{HTML::image(product_image_url($produk->gambar1),$produk->nama)}}
                         </a>
                         
@@ -137,7 +137,7 @@
                               @if(@$availablepo=='1')
                                 <div class="size_info">
                                   @if($opsiproduk->count()>0)
-                                    <select name="opsiproduk">
+                                    Opsi : <select name="opsiproduk">
                                       @foreach ($opsiproduk as $key => $opsi)
                                       <option value="{{$opsi->id}}" {{ $opsi->stok==0 ? 'disabled':''}} >
                                         {{$opsi->opsi1.($opsi->opsi2=='' ? '':' / '.$opsi->opsi2).($opsi->opsi3=='' ? '':' / '.$opsi->opsi3)}} {{price($opsi->harga)}}
@@ -147,10 +147,8 @@
                                   @endif
                                 </div>
                               <div class="space30 clearfix"></div>
-                                <div class="qty-btngroup clearfix">
-                                  <button type="button" class="minus">-</button>
-                                   <input type="text" class="qty" name='qty' value="1" size="2" id="qty-input">
-                                  <button type="button" class="plus">+</button>
+                                <div class="clearfix">
+                                   Jumlah : <input style="display: compact;" type="text" name='qty' value="1" size="2" id="qty-input">
                                 </div>
                                 <div class="space30 clearfix"></div>
                                 <div class="add-to-cart">
@@ -162,7 +160,7 @@
                               @endif
                             @else
                               @if($opsiproduk->count() > 0)
-                              <select name="opsiproduk">
+                              Opsi : <select name="opsiproduk">
                                 @foreach ($opsiproduk as $key => $opsi)
                                 <option value="{{$opsi->id}}" {{ $opsi->stok==0 ? 'disabled':''}} >
                                   {{$opsi->opsi1.($opsi->opsi2=='' ? '':' / '.$opsi->opsi2).($opsi->opsi3=='' ? '':' / '.$opsi->opsi3)}} {{price($opsi->harga)}}
@@ -171,10 +169,8 @@
                               </select>
                               @endif
                               <div class="space30 clearfix"></div>
-                              <div class="qty-btngroup clearfix">
-                                <button type="button" class="minus">-</button>
-                                 <input type="text" class="qty" name='qty' value="1" size="2" id="qty-input">
-                                <button type="button" class="plus">+</button>
+                              <div class="clearfix">
+                                 Jumlah : <input style="display: compact;" type="text" class="qty" name='qty' value="1" size="2" id="qty-input">
                               </div>
                               <div class="space30 clearfix"></div>
                               <div class="add-to-cart">
@@ -243,7 +239,7 @@
                     </div> -->
                   </div>
                 </div>
-                
+                @if(count($produklain) > 0)
                 <!-- RELATED PRODUCTS -->
                 <div class="section carousel-iframe">
                   <div class="container">
@@ -314,7 +310,7 @@
                   </div>
                 </div>
                 <!-- /RELATED PRODUCTS -->
-              
+                @endif
               </div>
             </div>
           </div>
