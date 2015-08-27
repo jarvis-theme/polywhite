@@ -50,10 +50,10 @@ html[xmlns] .slides {display: block;}
 /* Direction Nav */
 .flex-direction-nav {*height: 0;}
 .flex-direction-nav a {/*width: 60px; height: 80px;*/ margin: -20px 0 0; display: block; background: rgba(0, 0, 0, 0.49); position: absolute; top: 40%; z-index:9; cursor: pointer; /*text-indent: -9999px;*/ -webkit-transition: all .3s ease;  text-decoration: none;  font-size: large;  border-radius: 20px;  padding: 4px 10px;}
-.flex-direction-nav .flex-next {background-position: 100% 0; right: -30px;color: #fff;}
+.flex-direction-nav .flex-next {background-position: 100% 0; right: -40px;color: #fff;}
 .homepage2 .flex-direction-nav .flex-next { right: 5px; }
 .homepage2 .flex-direction-nav .flex-prev {left: 5px;}
-.flex-direction-nav .flex-prev {left: -30px;color: #fff;}
+.flex-direction-nav .flex-prev {left: -40px;color: #fff;}
 .flexslider:hover .flex-next {opacity: 0.8; right: 5px;}
 .flexslider:hover .flex-prev {opacity: 0.8; left: 5px;}
 .flexslider:hover .flex-next:hover, .flexslider:hover .flex-prev:hover {opacity: 1;}

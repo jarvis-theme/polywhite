@@ -17,10 +17,8 @@
                 {{ Theme::partial('subscribe') }}   
             </div>
             {{ Theme::partial('footer') }}  
-            {{ Theme::partial('defaultjs') }}   
-            {{-- Theme::asset()->scripts() --}}
-            {{-- Theme::asset()->container('footer')->scripts() --}}
         </div>
-        {{ Theme::partial('analytic') }}
     </body>
+    {{ Theme::partial('defaultjs') }}   
+    {{ Theme::partial('analytic') }}
 </html>

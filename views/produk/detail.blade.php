@@ -9,7 +9,8 @@
                 <div class="breadcrumbs">
                   <ul class="unstyled">
                     <li><a href="{{URL::to('/')}}">Home</a></li>
-                    {{$breadcrumb}}
+                    <li><a href="{{URL::to('produk')}}">Produk</a></li>
+                    <li><span>{{$produk->nama}}</span></li>
                   </ul>
                 </div>
               </div>
@@ -80,18 +81,18 @@
                       <div class="product-album" >
 
                         <a href="#" class="" title="">
-                          {{HTML::image(product_image_url($produk->gambar1),$produk->nama)}}
+                          {{HTML::image(product_image_url($produk->gambar1,'large'),$produk->nama)}}
                         </a>
                         
                         <ul class="unstyled ">
                           @if($produk->gambar2)
-                          <li class="slides"><a href="javascript:void(0);">{{HTML::image(product_image_url($produk->gambar2), '$produk->nama')}}</a></li>
+                          <li class="slides"><a href="javascript:void(0);">{{HTML::image(product_image_url($produk->gambar2), $produk->nama)}}</a></li>
                           @endif
                           @if($produk->gambar3)
-                          <li class="slides"><a href="javascript:void(0);">{{HTML::image(product_image_url($produk->gambar3), '$produk->nama')}}</a></li>
+                          <li class="slides"><a href="javascript:void(0);">{{HTML::image(product_image_url($produk->gambar3), $produk->nama)}}</a></li>
                           @endif
                           @if($produk->gambar4)
-                          <li class="slides"><a href="javascript:void(0);">{{HTML::image(product_image_url($produk->gambar4), '$produk->nama')}}</a></li>
+                          <li class="slides"><a href="javascript:void(0);">{{HTML::image(product_image_url($produk->gambar4), $produk->nama)}}</a></li>
                           @endif
                         </ul>
                       
@@ -195,9 +196,7 @@
                           <div class="space20 clearfix"></div>
                           <br><br>
                           <div style="margin: 20px 0px; border-top: 1px solid #EEE; padding: 20px 0px;">
-                            <iframe src="//www.facebook.com/plugins/share_button.php?href={{product_url($produk)}}&amp;layout=button" scrolling="no" frameborder="0" style="border:none; overflow:hidden;height:20px;width:75px;" allowTransparency="true"></iframe>
-                            <a class="twitter-share-button" href="https://twitter.com/share" data-count="none">Tweet </a>
-                            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+                              {{sosialShare(product_url($produk))}}
                           </div>
                           <!-- /SHARE CONTENT -->
                         </div>
@@ -210,8 +209,8 @@
                 <div class="bs-example bs-example-tabs">
                   <ul id="myTab" class="nav nav-tabs">
                     <li class="active"><a href="#home" data-toggle="tab">Description</a></li>
+                    <li><a href="#detail" data-toggle="tab">Detail</a></li>
                     <li><a href="#review" data-toggle="tab">Review</a></li>
-                    <li><a href="#comment" data-toggle="tab">Comment</a></li>
                     <li class="dropdown">
                     <!-- <a href="#" id="myTabDrop1" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
                     <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop1">
@@ -224,19 +223,16 @@
                     <div class="tab-pane fade in active" id="home">
                       <p>{{$produk->deskripsi}}</p>
                     </div>
+                    <div class="tab-pane fade" id="detail">
+                      <ul>
+                        <li><span>Berat:</span> {{$produk->berat}} gram</li>
+                        <li><span>Stock:</span> {{$produk->stok}}</li>
+                        <li><span>Vendor:</span> {{$produk->vendor}}</li>
+                      </ul>
+                    </div>
                     <div class="tab-pane fade" id="review">
                       {{pluginTrustklik()}}
                     </div>
-                    <div class="tab-pane fade" id="comment">
-                      {{$fbscript}}
-                      {{fbcommentbox(product_url($produk), '670px', '5', 'light')}}
-                    </div>
-                    <!-- <div class="tab-pane fade" id="dropdown1">
-                    <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.</p>
-                    </div>
-                    <div class="tab-pane fade" id="dropdown2">
-                    <p>Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater. Lomo wolf viral, mustache readymade thundercats keffiyeh craft beer marfa ethical. Wolf salvia freegan, sartorial keffiyeh echo park vegan.</p>
-                    </div> -->
                   </div>
                 </div>
                 @if(count($produklain) > 0)
@@ -279,7 +275,7 @@
                                     {{is_produkbaru($myproduk)}}
                                     {{is_outstok($myproduk)}}
                                     <div class="product-thumbnail">
-                                      {{HTML::image(product_image_url($myproduk->gambar1), $myproduk->nama, array('style' => 'height:220px'))}}
+                                      {{HTML::image(product_image_url($myproduk->gambar1,'medium'), $myproduk->nama, array('style' => 'height:220px'))}}
                                     </div>
                                   </a>
                                   
@@ -289,8 +285,10 @@
                                     </h4>
                                     @if($setting->checkoutType!=2)
                                     <div class="details">
-                                          <div class="product-price"> 
+                                          <div class="product-price">
+                                          @if(!empty($myproduk->hargaCoret))
                                            <span class="price-old">{{price($myproduk->hargaCoret)}}</span> 
+                                          @endif
                                            <span class="price-new">{{price($myproduk->hargaJual)}}</span> 
                                           </div>
                                     </div>

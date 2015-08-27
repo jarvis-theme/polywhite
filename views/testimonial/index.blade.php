@@ -1,20 +1,3 @@
-@if(Session::has('msg'))
-<div class="success" id='message' style='display:none'>
-  <p>Terima kasih, testimonial anda sudah terkirim.</p>
-</div>
-@endif
-@if($errors->all())
-<div class="error" id='message' style='display:none'>
-Terjadi kesalahan dalam menyimpan data.<br>
-<ul>
-    @foreach($errors->all() as $message)
-    <li>{{ $message }}</li>
-    @endforeach
-</ul>
-</div>
-@endif
-
-
 <!-- SITE CONTENT  -->
 <div id="site-wrapper">
   <br>
@@ -100,12 +83,6 @@ Terjadi kesalahan dalam menyimpan data.<br>
                   <div class="col-xs-8 col-sm-8">
                       {{$testimonial->links()}}
                   </div>
-                  <!-- <div class="col-xs-4 col-sm-4">
-                      <ul class="direction-nav pagination-direction float-right">
-                          <li><a href="#" class="btn btn-prev disabled"><span class="icon-arrow-left10"></span></a></li>
-                          <li><a href="#" class="btn btn-next"><span class="icon-arrow-right9"></span></a></li>
-                      </ul>
-                  </div> -->
               </div>
           </div>
           <!-- Latest products -->
@@ -121,7 +98,7 @@ Terjadi kesalahan dalam menyimpan data.<br>
                     <!-- carousel wrapper -->
                     <form class="form-horizontal contact" action="{{URL::to('testimoni')}}" method="post">
                         <div class="form-group">
-                            <div class="col-xs-12 col-sm-12 col-md-9">
+                            <div class="col-xs-12 col-sm-12">
                                 <input name="nama" type="text" class="form-control" id="inputName" name="nama" required placeholder="Nama">
                             </div>
                         </div>

@@ -3,7 +3,7 @@
 | General & helper
 | ----------------------------------------------
 */
-
+.main .row .section {padding: 0px;}
 body {
 	font-family: 'Open Sans', 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 	font-weight: normal;
@@ -200,7 +200,6 @@ input, select, textarea, .form-control {
 	
 }
 input {
-
 br {margin:0;}
 }
 select.form-control {
@@ -290,7 +289,6 @@ input[type="text"].error,input[type="email"].error,input[type="password"].error,
 	}
 
 	.pretty-list.arrow-list > li > a:before {
-		
 		margin-right: 9px;
 	}
 	/* box category */
@@ -558,7 +556,7 @@ input[type="text"].error,input[type="email"].error,input[type="password"].error,
 	.breadcrumbs ul > li > a:hover {
 		color: #ea6ea0;
 	}
-
+	.breadcrumbs {color: #797979;}
 
 	/*
 	| ----------------------------------------------
@@ -584,26 +582,17 @@ input[type="text"].error,input[type="email"].error,input[type="password"].error,
 	.pagination > ul > li > a,
 	.pagination > ul > li > span {
 		width: 35px;
-		
-
 		height: 35px;
 		padding: 3px;
-		
-
 		line-height: 27px;
 		text-align: center;
-		
-
 		font-size: 12px;
-		
-
 		font-weight: 300;
 	}
 	
 	.pagination > ul > li:first-child > a,
 	.pagination > ul > li:last-child > a {
-    border-radius: 0;
-		
+    	border-radius: 0;
 	}
 	.pagination > .active > a {
 		color: #7e7e7e;
@@ -2155,8 +2144,6 @@ input[type="text"].error,input[type="email"].error,input[type="password"].error,
 |	4. Our clients
 | ----------------------------------------------
 */
-
-
 #wrap-container {
 	background-color: #fff;
 }
@@ -2165,7 +2152,6 @@ input[type="text"].error,input[type="email"].error,input[type="password"].error,
 	/*border: 3px solid #DDD;*/
 	background: #FAFAFA;
 	padding: 15px;
-
 }
 
 .category-page .description:before {
@@ -2324,7 +2310,7 @@ color: #FFF;
 	margin-bottom: 25px;
 	border-bottom: 2px solid #EAEAEA;
 	position: relative;
-}
+	}
 	.footer-inner.alt .widget-header:after , .footer-inner.main .widget-header:after {
 	padding: 0;
 	content: ' ';
@@ -2549,9 +2535,8 @@ color: #FFF;
 		padding: 0;
 		margin: 0 0px 0 6px;
 		float: left;
-	
 		background: none !important;  border: 3px solid;  border-radius: 0;  color: #AAA;
-}
+	}
 	.direction-nav .btn > span {
 		font-size: 20px;
 		color: #AAA;
@@ -2560,11 +2545,10 @@ color: #FFF;
 	.carousel-direction-arrows .crsl-next,
 	.direction-nav .btn-next {
     background: none !important;
-	
     border: 3px solid;
     border-radius: 0;
     color: #AAA;
-}
+	}
 	.direction-nav .disabled {
 		pointer-events: none;
 		cursor: default;
@@ -2572,9 +2556,8 @@ color: #FFF;
 		filter: alpha(opacity=65);
 		-webkit-box-shadow: none;
 		box-shadow: none;
-	
 		background: none !important;  border: 3px solid;  border-radius: 0;  color: #AAA;
-}
+	}
 	
 	
 	/*
@@ -2664,7 +2647,6 @@ color: #FFF;
 			bottom: 0;
 			left: 0;
 			padding: 0.75em 1.25em;
-			
 			font-weight: 600;
 			color: #fff;
 			background-color: #ea6ea0;
@@ -2711,7 +2693,6 @@ color: #FFF;
 		}
 		.products-container .product  h4.title {
 			margin: 10px 0;
-			
 		}
 		.offer .product-info .title {
 			font-size: 14px;
@@ -2731,17 +2712,12 @@ color: #FFF;
 			right: 5px;
 			position: absolute;
 			bottom: 83px;
-						
 		}
 		#product-list-container .mix  .product-info .by{
-			
 			bottom: 92px ;
-						
 		}
 		 .product-list .mix  .product-info .by{
-			
 			bottom: 52px !important;
-						
 		}
 		.offer .product-info .by > a {
 			color: #ea6ea0;
@@ -2901,7 +2877,6 @@ color: #FFF;
 			animation-fill-mode: both;
 		}
 		
-		
 		.compare-total:hover{
 			text-transform: capitalize;
 			background: #ea6ea0;
@@ -2922,12 +2897,8 @@ color: #FFF;
 			
 		}
 		.home-container .tab-content .product{
-		
-		
-		position: relative;
-		
-		text-align:left !important;
-		
+			position: relative;
+			text-align:left !important;
 		}
 		#product-list-container.product-list .mix_all .product .button-add{display: none !important;}
 		.btn-group>.btn, .btn-group-vertical>.btn {
@@ -2962,16 +2933,12 @@ color: #FFF;
 		.products-container .product .ribbon.new { background-position: 0 0; }
 		.products-container .product .ribbon.hot { background-position: -78px 0; }
 		.products-container .product .ribbon.special { background-position: -156px 0; }
-		
-	
-
 
 /*
 | ----------------------------------------------
 | c. FOOTER SECTION
 | ----------------------------------------------
 */
-
 #footer-container {background-color:#fff; position: relative; margin-top:20px;}
 .footer-inner.alt{background-color:#fff; position: relative;}
 .footer-inner .container{
@@ -2996,7 +2963,6 @@ color: #FFF;
 .footer-inner .widget {
 	position: relative;
 }
-
 
 
 /* text widget */
@@ -3162,7 +3128,7 @@ color: #FFF;
 	.display-mode ul > li > a {
 		color: #757575;
 		pointer-events: all;
-position: relative;
+		position: relative;
 	}
 	.display-mode ul > li > a:hover {
 		color: #ea6ea0;
@@ -3228,20 +3194,16 @@ position: relative;
     border: none;
     padding: 5px 0px;
     font-weight: bold;
-    
 }
 #slider-range {
 margin-top:10px;
 }
 .help-txt-heading {
 font-size: 10px; 
-
 }
 .help-txt {
 font-size: 10px;
 font-weight: bold;
-
-
 }
 .buttonclear {
 margin:0 10px 10px 35px;
@@ -3264,10 +3226,9 @@ font-weight: bold;
 		background: #F5F5F5;
 		padding: 15px 0;
 		margin: 15px 0;
-	
 		border: 3px solid #EBEBEB;
-}
-	.filtersgroup  ,.display-mode             { padding: 0 15px;}
+	}
+	.filtersgroup  ,.display-mode { padding: 0 15px; color: #797979;}
 	.filtersgroup  .limit  {float: left;margin-right: 10px; }
 	.filtersgroup  .sort    {float: left;margin-right: 10px; }
 	span.icon-shopcart {cursor:	pointer;}
@@ -3288,8 +3249,6 @@ font-weight: bold;
 	border-radius: 4px;
 	-moz-border-radius: 4px;
 	-webkit-border-radius: 4px;
-	
-	
 	}
 	.product-list .mix {
 		width: 100%;
@@ -3326,7 +3285,7 @@ font-weight: bold;
 		color: #fff;
 		line-height: 1;
 	}
-			.productpage-info .description .prices:after {
+		.productpage-info .description .prices:after {
 			position: absolute;
 			top: 82px;
 			left: -67px;
@@ -3336,8 +3295,8 @@ font-weight: bold;
 			padding: 0 1px;
 			background-color: #ea6ea0;
 			content: ' ';
-			}
-				.productpage-info .description .prices:before {
+		}
+		.productpage-info .description .prices:before {
 			position: absolute;
 			top: 78px;
 			left: -70px;
@@ -3348,7 +3307,7 @@ font-weight: bold;
 			padding: 0 1px;
 			background-color: #ea6ea0;
 			content: ' ';
-			}
+		}
 	
 	.productpage-info .description .discount {
 		border-bottom: 1px solid #EEE;
@@ -3360,7 +3319,7 @@ font-weight: bold;
 		color: #fff;
 	}
 	.productpage-info .description .prices > .orginal-price {
-		color: #E45B5B;
+		color: #ea6ea0;
 		/*display: block;*/
 		margin-top: 15px;
 		padding-top: 15px;
@@ -3369,9 +3328,8 @@ font-weight: bold;
 	.productpage-info .description .text span{color: #ea6ea0; margin-right:10px;line-height:22px;}
 	.productpage-info .description .text {
 		margin-bottom: 25px;
-	
 		text-transform: capitalize;
-}
+	}
 	.productpage-info .description .links {
 		padding: 0;
 		margin: 0;
@@ -3405,8 +3363,7 @@ font-weight: bold;
 	.productpage-info .description .links > li a{color:#fff;}
 	.productpage-info .description .add-to-cart {
 		float: left;
-	
-}
+	}
 	.productpage-info .description .minimum {margin-bottom: 20px;}
 	.productpage-info .description .add-to-cart > .btn {
 		padding: 20px 92px;
@@ -3453,9 +3410,8 @@ font-weight: bold;
 	.product-single .product-album > ul {
 		text-align: center;
 		margin: 7px 0;
-	
 		padding: 0;
-}
+	}
 	.product-single .product-album > ul > li {
 		float: left;
 	}
@@ -3590,7 +3546,6 @@ font-weight: bold;
 			width: 10%;
 		}
 
-		
 		/** Product thumbnail */
 		.my-cart .img-placeholder {
 			padding: 2px;
@@ -3845,7 +3800,6 @@ table.radio tr.highlight:hover td {
 	color: #fff !important;
 	border: 3px solid #000;
 	border-bottom-color: #ff5757;
-	
 }
 .pagination .results {
 	float: right;
@@ -3857,7 +3811,6 @@ table.radio tr.highlight:hover td {
 /* ul */
 div.refine_search ul {
     float: none;
-
 }
 div.refine_search ul li {
 	border: 2px solid #ddd;
@@ -3922,8 +3875,6 @@ a.button, input.button {
 	padding: 8px 15px 9px 15px;
 	display: inline-block;
 }
-
-
 a.button:hover, input.button:hover {
 }
 .buttons {
@@ -4312,3 +4263,5 @@ body, h1, h2, h3, h4, h5, h6, input, select, textarea, .form-control, button {
 .copyright{
 	margin-top: 10px;
 }
+.fb_reset {display: inline-block;}
+.fb-share-button {top: -5px; margin: 0 10px 0 15px;}

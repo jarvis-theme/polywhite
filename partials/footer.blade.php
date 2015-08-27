@@ -1,11 +1,8 @@
 <!-- SITE FOOTER -->
 <div id="footer-container" class="footer-container">
-    
     <div class="footer-powered alt">
         <div class="container">
-        
             <div class="row">
-
                 @foreach($tautan as $key=>$group)
                 <!-- WIDGET LINKS -->
                 <div class="col-xs-12 col-sm-6 col-lg-3">
@@ -14,21 +11,9 @@
                             <h4 class="widget-header">{{$group->nama}}</h4>
                             <ul class="cl-effect-1">
                                 @foreach($group->link as $key=>$link)
-                                    <li>
-                                        @if($link->halaman=='1')
-                                            @if($link->linkTo == 'halaman/about-us')
-                                            <a href={{"'".URL::to(strtolower($link->linkTo))."'"}}>{{$link->nama}}</a>
-                                            @else
-                                            <a href={{"'".URL::to("halaman/".strtolower($link->linkTo))."'"}}>{{$link->nama}}</a>
-                                            @endif
-                                        @elseif($link->halaman=='2')
-                                            <a href={{"'".URL::to("blog/".strtolower($link->linkTo))."'"}}>{{$link->nama}}</a>
-                                        @elseif($link->url=='1')
-                                            <a href="{{strtolower($link->linkTo)}}">{{$link->nama}}</a>
-                                        @else
-                                            <a href={{"'".URL::to(strtolower($link->linkTo))."'"}}>{{$link->nama}}</a>
-                                        @endif
-                                    </li>                        
+                                <li>
+                                    <a href="{{menu_url($link)}}">{{$link->nama}}</a>
+                                </li>
                                 @endforeach
                             </ul>
                         </div>
@@ -40,7 +25,6 @@
                     <div class="widget widget-contact">
                         <h4 class="widget-header">Contact Us</h4>
                         <div class="widget-inner">
-                        
                             <div class="media">
                                 <div class="pull-left">
                                     <i class="icon-location"></i>
@@ -83,7 +67,6 @@
                                 </div>
                             </div>
                             @endif
-                            
                         </div>
                     </div>
                     <div class="space40 hidden-lg"></div>
@@ -98,12 +81,11 @@
                             @foreach(list_banks() as $value)
                             <li>{{HTML::image(bank_logo($value))}}</li>
                             @endforeach
-                            @if(list_payments()[0]->aktif == 1)
-                            <li><img src="{{URL::to('img/bank/paypal.png')}}" alt="support paypal" /></li>
-                            @endif
-                            @if(list_payments()[2]->aktif == 1)
-                            <li><img src="{{URL::to('img/bank/ipaymu.jpg')}}" alt="support ipaymu" /></li>
-                            @endif
+                            @foreach(list_payments() as $pay)
+                                @if($pay->nama == 'ipaymu' && $pay->aktif == 1)
+                                <li><img src="{{URL::to('img/bank/ipaymu.jpg')}}" alt="support ipaymu" /></li>
+                                @endif
+                            @endforeach
                             @if(count(list_dokus()) > 0 && list_dokus()->status == 1)
                             <li><img src="{{URL::to('img/bank/doku.jpg')}}" alt="support doku myshortcart" /></li>
                             @endif
@@ -113,15 +95,12 @@
                 </div>
                 <!-- /SUBSCRIPTION -->
             </div>
-        
         </div>
     </div>
     
     <div class="footer-inner">
         <div class="container">
-        
             <div class="row">
-            
                 <div class="col-xs-12 col-sm-8 copyright center-sm">
                      Copyright &copy; {{date('Y')}} {{ Theme::place('title') }} | All Rights Reserved | Powered by <a style="text-decoration: none;" target="_blank" href="http://jarvis-store.com">Jarvis Store</a>
                 </div>
@@ -130,26 +109,29 @@
                 
                 <div class="col-xs-12 col-sm-4 header-social-icons multicolor center-sm">
                     <ul>
+                        @if($kontak->fb)
+                        <li><a target="_blank" href="{{URL::to($kontak->fb)}}" ><i class="icon-facebook"></i></a></li>
+                        @endif
                         @if($kontak->tw)
                         <li><a target="_blank" href="{{URL::to($kontak->tw)}}" ><i class="icon-twitter"></i></a></li>
                         @endif
-                        @if($kontak->fb)
-                        <li><a target="_blank" href="{{URL::to($kontak->fb)}}" ><i class="icon-facebook"></i></a></li>
+                        @if($kontak->gp)
+                        <li><a target="_blank" href="{{URL::to($kontak->gp)}}" ><i class="icon-google-plus"></i></a></li>
+                        @endif
+                        @if($kontak->pt)
+                        <li><a target="_blank" href="{{URL::to($kontak->pt)}}" ><i class="icon-pinterest"></i></a></li>
+                        @endif
+                        @if($kontak->tl)
+                        <li><a target="_blank" href="{{URL::to($kontak->tl)}}" ><i class="icon-tumblr"></i></a></li>
                         @endif
                         @if($kontak->ig)
                         <li><a target="_blank" href="{{URL::to($kontak->ig)}}" ><i class="icon-instagram"></i></a></li>
                         @endif
-                        @if($kontak->gp)
-                        <li><a target="_blank" href="{{URL::to($kontak->gp)}}" ><i class="icon-google-plus"></i>/a></li>
-                        @endif
                     </ul>
                 </div>
-        
             </div>
-            
         </div>
     </div>
-    
 </div>
 <!-- /SITE FOOTER -->
 {{pluginPowerup()}}

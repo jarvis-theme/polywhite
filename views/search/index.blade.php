@@ -7,7 +7,7 @@
                 <div class="breadcrumbs">
                     <ul class="unstyled">
                         <li><a href="{{URL::to('/')}}">Home</a></li>
-                                            
+                        <li class="active">Search</li>
                     </ul>
                 </div>
             </div>
@@ -52,57 +52,14 @@
                     @endforeach
                 </div>
                 <!-- /CATEGORIES LIST -->                
-                <div class="section carousel-iframe">
-                    <div class="container">
-                    
-                        <div class="row carousel-iframe offer">
-                            <div class="col-xs-12 col-sm-12">
-                            
-                                <h4 class="section-title">Koleksi</h4>
-                                <div class="section-inner">
-                                
-                                    <!-- carousel control nav direction -->
-                                    <div class="carousel-direction-arrows">
-                                        <ul class="direction-nav carousel-direction">
-                                            <li>
-                                                <a class="crsl-prev btn" href="#">
-                                                    <span class="icon-arrow-left10"></span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a class="crsl-next btn" href="#">
-                                                    <span class="icon-arrow-right9"></span>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <!-- /carousel control nav direction -->
-                                    
-                                    <!-- carousel wrapper -->
-                                    <div class="carousel-wrapper row" data-minitems="1" data-maxitems="4" data-loop="true" data-autoplay="false" data-slideshow-speed="3000" data-speed="300">
-                                        <ul class="products-container product-grid carousel-list portrait ">
-                                            @foreach(list_koleksi() as $mykoleksi)
-                                            <li>
-                                                <div class="product">
-                                                    <a href="{{koleksi_url($mykoleksi)}}" class="product-link clearfix">
-                                                        <div class="ribbon special">{{short_description($mykoleksi->nama, 25)}}</div>
-                                                        <div class="product-thumbnail">
-                                                            {{HTML::image(koleksi_image_url($mykoleksi->gambar),'banner')}}
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </li>
-                                            @endforeach
-                                        </ul>
-                                    </div>
-                                    <!-- /CAROUSEL WRAPPER -->
-                                    
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="accordionmenu section">
+                    <h4 class="section-title">Koleksi</h4>
+                    @foreach(list_koleksi() as $mykoleksi)
+                    <a href="{{koleksi_url($mykoleksi)}}" class="product-link clearfix">
+                        {{$mykoleksi->nama}}
+                    </a>
+                    @endforeach
                 </div>
-                <!-- LATEST PRODUCTS -->
             </div>
             <!-- /SIDE BAR -->
 
@@ -181,7 +138,7 @@
                                         <div class="ribbon special">Kosong</div>
                                     @endif
                                     <div class="product-thumbnail">
-                                        {{HTML::image(product_image_url($myproduk->gambar1),'product',array('title'=>'product'))}}
+                                        {{HTML::image(product_image_url($myproduk->gambar1,'medium'),'product',array('title'=>'product','style'=>'min-height:199px'))}}
                                     </div>
                                 </a>
                                 <div class="product-info clearfix">

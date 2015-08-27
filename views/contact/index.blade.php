@@ -1,23 +1,3 @@
-@if(Session::has('msg2'))
-<div class="success" id='message' style='display:none'>
-    Terima kasih, pesan anda sudah terkirim.
-</div>
-@endif
-@if(Session::has('msg3'))
-<div class="success" id='message' style='display:none'>
-    Maaf, pesan anda belum terkirim.
-</div>
-@endif
-@if($errors->all())
-<div class="error" id='message' style='display:none'>
-    Terjadi kesalahan dalam menyimpan data.<br><br>
-    @foreach($errors->all() as $message)
-    -{{ $message }}<br>
-    @endforeach
-</ul>
-</div>
-@endif
- 
 <div id="site-wrapper">
     <!-- /BREADCRUMBS -->
     <div class="breadcrumbs-wrapper">
@@ -124,13 +104,13 @@
 
                                     <form class="form-horizontal contact" action="{{URL::to('kontak')}}" method="post">
                                         <div class="form-group">
-                                            <div class="col-xs-12 col-sm-12 col-md-9">
+                                            <div class="col-xs-12 col-sm-12">
                                                 <input required name="namaKontak" id="contactName" type="text" class="form-control" id="inputName" name="name"  placeholder="Nama">
                                             </div>
                                             <!-- <label for="inputName" class="col-xs-12 col-sm-3 required" >Nama</label> -->
                                         </div>
                                         <div class="form-group">
-                                            <div class="col-xs-12 col-sm-12 col-md-9">
+                                            <div class="col-xs-12 col-sm-12">
                                                 <input required name="emailKontak" id="email" type="text" class="form-control" id="inputEmail" name="email" placeholder="Email">
                                             </div>
                                             <!-- <label for="inputEmail" class="col-xs-12 col-sm-3 required">Email</label> -->

@@ -43,8 +43,6 @@
                     </span>
                     <b style="float:right;"><a style="text-decoration: none" href="{{URL::to('testimoni')}}">Lainnya..</a></b>
                 </ul>
-
-
             </div>
         </div>
         <!--SIDE NAV ENDS-->
@@ -64,11 +62,12 @@
                        {{is_produkbaru($myproduk, $kiri=1)}}
                        {{is_outstok($myproduk, $kiri=1)}}
                         <a href="{{product_url($myproduk)}}" class="product_image">
-                        	{{HTML::image(product_image_url($myproduk->gambar1), $myproduk->nama, array('style' => 'max-height: 217px;'))}}
+                        	{{HTML::image(product_image_url($myproduk->gambar1,'medium'), $myproduk->nama, array('style' => 'max-height: 217px;'))}}
                     	</a>
                         <div class="product_info">
                             <h3><a href="{{product_url($myproduk)}}">{{strtoupper(shortName($myproduk->nama,24))}}</a></h3>
-                            <small>{{shortDescription($myproduk->deskripsi,80)}}</small> </div>
+                            <small>{{shortDescription($myproduk->deskripsi,80)}}</small>
+                        </div>
                         @if($setting->checkoutType==1)
                         <div class="price_info"> <!-- <a href="#">+ Add to wishlist</a> -->
 

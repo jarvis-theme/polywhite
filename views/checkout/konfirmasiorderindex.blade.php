@@ -1,12 +1,3 @@
-@if(Session::has('message'))
-
-<div class="error" id='message' style='display:none'>
-	<p>Maaf, kode order anda tidak ditemukan.</p>
-</div>
-
-@endif
-
-
 <!-- SITE CONTENT  -->
   <div id="site-wrapper">
     <br>

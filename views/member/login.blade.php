@@ -47,7 +47,7 @@
             <div class="col-xs-12 col-sm-8 col-lg-9 main">
                 <div class="section">
                     <form action="{{URL::to('member/login')}}" method="post" enctype="multipart/form-data">
-                    <p>Silahkan Login untuk kemudahan melakukan checkout. Cepat dan Mudah dalam bertransaksi. Mudah untuk mengetahui Order Histori dan Status.</p>
+                    <p>Silahkan Login untuk menikmati kemudahan dalam berbelanja. Cepat dan Mudah dalam bertransaksi. Mudah untuk mengetahui Riwayat Pemesanan dan Status Pemesanan produk.</p>
                     <h2>Login</h2>
                     <div class="content">
                     <table class="form">

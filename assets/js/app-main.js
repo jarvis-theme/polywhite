@@ -2,6 +2,8 @@ var dirTema = document.getElementsByTagName('link')[1].getAttribute('href');
 
 require.config({
 	baseUrl: '/',
+    urlArgs: "v=001",
+	waitSeconds : 30,
 	shim: {
 		"bootstrap"	: {
 			deps : ['jquery'],
@@ -43,18 +45,16 @@ require.config({
 			deps : ['jquery'],
 		},
 	},
-    "waitSeconds" : 60,
-    urlArgs: "v=001",
 
 	paths: {
 		// LIBRARY
+		jquery 			: ['http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min', dirTema+'assets/js/lib/jquery.min'],
 		bootstrap 		: dirTema+'assets/js/lib/bootstrap.min',
 		carouFredSel	: dirTema+'assets/js/lib/jquery.carouFredSel.min',
-		cart			: 'js/cart',
+		cart			: 'js/shop_cart',
 		flexslider		: dirTema+'assets/js/lib/jquery.flexslider.min',
 		jq_ui			: 'js/jquery-ui',
 		jq_zoom			: dirTema+'assets/js/lib/jquery.zoom-min',
-		jquery 			: ['http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min', dirTema+'assets/js/lib/jquery.min'],
 		lib_packages	: dirTema+'assets/js/lib/package.min',
 		mixitup			: dirTema+'assets/js/lib/jquery.mixitup.min',
 		modernizr		: dirTema+'assets/js/lib/modernizr.min',
@@ -79,32 +79,26 @@ require.config({
 		produk          : dirTema+'assets/js/pages/produk',
 		category        : dirTema+'assets/js/pages/category',
 		search        	: dirTema+'assets/js/pages/search',
-		// cart         	: dirTema+'assets/js/pages/cart',
 	}
 });
 require([
 	'router',
 	'bootstrap',
 	'main',
-], function(router,b,main)
+	'cart',
+], function(router,b,main,cart)
 {
 	// HOME
 	router.define('/','home@run');
 	router.define('home', 'home@run');
 
-	// MEMBER
-	router.define('member/*', 'member@run');
-
 	// PRODUK
-	// router.define('produk', 'cart@run');
 	router.define('produk/*', 'produk@run');
 
-	// CATEGORY
-	router.define('category/*', 'category@run');
-
 	// SEARCH
-	router.define('search/*', 'search@run');
+	// router.define('search/*', 'search@run');
 
 	main.run();
 	router.run();
+	cart.run();
 });

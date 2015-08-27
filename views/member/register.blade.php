@@ -1,35 +1,3 @@
-@if($errors->all())
-
-<div class="error" id='message' style='display:none'>
-
-  Kami menemukan error berikut:
-
-  <br>
-
-  <ul>
-
-    @foreach($errors->all() as $message)
-
-    <li>{{ $message }}</li>
-
-    @endforeach
-
-  </ul>
-
-</div>
-
-@endif
-
-@if(Session::has('success'))
-
-<div class="success" id='message' style='display:none'>
-
-  Selamat anda telah terdaftar.      
-
-</div>
-
-@endif
-
 <!-- SITE CONTENT  -->
 <div id="site-wrapper">
 
@@ -91,9 +59,9 @@
                 <!-- MAIN CONTENT -->
                 <div class="col-xs-12 col-sm-8 col-lg-9 main">
                 <div class="section">
-                  <p>If you already have an account with us, please login at the <a href="{{URL::to('member')}}">login page</a>.</p>
+                  <p>Sudah mempunyai akun? Silahkan <a href="{{URL::to('member')}}">login</a></p>
                   {{Form::open(array('url'=>'member','method'=>'post','class'=>'form-horizontal'))}}
-                    <h2>Your Personal Details</h2>
+                    <h2>Data Diri</h2>
                     <div class="content">
                       <table class="form">
                         <tbody><tr>
@@ -107,13 +75,13 @@
                             </td>
                         </tr>
                         <tr>
-                          <td><span class="required">*</span> Telephone:</td>
+                          <td><span class="required">*</span> Telepon:</td>
                           <td><input style="width:80%" type="text" name='telp' value='{{Input::old("telp")}}' required>
                             </td>
                         </tr>
                       </tbody></table>
                     </div>
-                    <h2>Your Address</h2>
+                    <h2>Alamat</h2>
                     <div class="content">
                       <table class="form">
                         <tbody>     
@@ -147,7 +115,7 @@
                         </tr>
                       </tbody></table>
                     </div>
-                    <h2>Your Password</h2>
+                    <h2>Password</h2>
                     <div class="content">
                       <table class="form">
                         <tbody><tr>
@@ -156,7 +124,7 @@
                             </td>
                         </tr>
                         <tr>
-                          <td><span class="required">*</span> Password Confirm:</td>
+                          <td><span class="required">*</span> Konfirmasi Password:</td>
                           <td><input type="password" name="password_confirmation" required>
                             </td>
                         </tr>
@@ -167,7 +135,7 @@
                         </tr>
                         <tr>
                           <td></td>
-                          <td colspan='2'><input type="checkbox" required name='readme' value="1">I have read and agree to the <a class="colorbox cboxElement" href="{{URL::to('service')}}" alt="Privacy Policy" target="_blank"><b>Privacy Policy</b></a> </td>
+                          <td colspan='2'><input type="checkbox" required name='readme' value="1">&nbsp;&nbsp;Saya telah membaca dan menyetujui <a class="colorbox cboxElement" href="{{URL::to('service')}}" alt="Privacy Policy" target="_blank"><b>Syarat & Ketentuan</b></a> </td>
                         </tr>
                       </tbody></table>
                     </div>

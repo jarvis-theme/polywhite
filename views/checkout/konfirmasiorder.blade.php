@@ -1,32 +1,3 @@
-@if($errors->all())
-
-<div class="error" id='message' style='display:none'>
-	We encountered the following errors:
-	<br>
-    @foreach($errors->all() as $message)
-
-    {{ $message }}<br>
-
-    @endforeach
-</div>
-
-@endif
-
-@if(Session::has('success'))
-
-<div class="success" id='message' style='display:none'>
-	<p>Terima kasih, konfirmasi anda sudah terkirim.</p>
-</div>
-
-@endif
-
-@if(Session::has('message'))
-
-<div class="error" id='message' style='display:none'>
-	<p>Maaf, kode order anda tidak ditemukan.</p>					
-</div>		
-
-@endif
 <br>
 <div class="breadcrumbs-wrapper">
     <div class="">

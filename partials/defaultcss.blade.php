@@ -20,4 +20,4 @@
 {{HTML::style(dirTemaToko().'polywhite/assets/css/flexslider/default.css')}}
 
 <!-- Other -->
-{{createFavicon($toko)}}
+{{favicon()}}
