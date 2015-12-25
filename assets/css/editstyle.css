@@ -3897,7 +3897,7 @@ a.button:hover, input.button:hover {
 	margin-left: auto;
 	margin-right: auto;
 }
-..nav-tabs{
+.nav-tabs{
 	height: 29px;
 	line-height: 19px;
 	border-bottom: 3px solid #EAEAEA;

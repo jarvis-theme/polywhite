@@ -921,9 +921,7 @@ input[type="text"].error,input[type="email"].error,input[type="password"].error,
 				color: #fff !important;
 				margin-left:15px;
 			}
-			.header-cart  .empty{
-
-			text-align: center;}
+			.header-cart  .empty{text-align: center;}
 
 		
 	/*
@@ -2930,9 +2928,14 @@ color: #FFF;
 			padding: 7PX 15PX;
 			z-index: 1;
 		}
-		.products-container .product .ribbon.new { background-position: 0 0; }
-		.products-container .product .ribbon.hot { background-position: -78px 0; }
+		.products-container .product .ribbon.new {
+			background-position: 0 0; background-color: #5bc0de; color: #fefefe
+		}
+		.products-container .product .ribbon.hot {
+			background-position: -78px 0; background-color: #ea6ea0; color: #fefefe
+		}
 		.products-container .product .ribbon.special { background-position: -156px 0; }
+		.empty{ background-color: #999; color: #fefefe !important }
 
 /*
 | ----------------------------------------------
@@ -3897,7 +3900,7 @@ a.button:hover, input.button:hover {
 	margin-left: auto;
 	margin-right: auto;
 }
-..nav-tabs{
+.nav-tabs{
 	height: 29px;
 	line-height: 19px;
 	border-bottom: 3px solid #EAEAEA;
@@ -4264,4 +4267,12 @@ body, h1, h2, h3, h4, h5, h6, input, select, textarea, .form-control, button {
 	margin-top: 10px;
 }
 .fb_reset {display: inline-block;}
-.fb-share-button {top: -5px; margin: 0 10px 0 15px;}
+.fb-share-button {top: -5px; margin: 0 10px 0 15px;}#myTab{height: auto}
+.blog-time{margin-left: 20px}.dateblog{margin:8px}.zerotop{margin-top: 0}#rek{width: 40%}#reklist{width: 100%}
+.right{text-align: right}.left{text-align: left}.image-prod{min-height: 199px}.noresult{text-align: center; border: 0}
+.maplocation{float:right;width:100%}.nodisplay{display: none}#imgprod{min-height:123px !important}
+.sidebarnav{border-bottom: solid 1px;border-bottom-color: #f38256; border-top: 0px}.side-contact{line-height: 2}
+.nodecor{text-decoration: none}.relative{position: relative}.home1{max-height: 217px}.inputform{width:80%}.banner{padding: 14px}
+.autowidth{width: auto !important}.compact{display: compact}#button-cart{padding: 15px 20px !important}
+.sosmed{margin: 20px 0px; border-top: 1px solid #EEE; padding: 20px 0px}.img-otherprod{height:220px}
+.shpcart{width: 100%;text-align:right}.label{color: #fefefe}.blogtitle{margin: 0}

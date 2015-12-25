@@ -1,12 +1,9 @@
 <!-- SITE HEADER  -->
 <div id="header-container">
-    
     <!-- main header -->
     <div id="header-center">
         <div class="container">
-            
             <div class="row">
-            
                 <!-- logo -->
                 <div class="col-xs-7 col-sm-7 logo-container">
                     <strong class="logo ">
@@ -30,7 +27,9 @@
                         </div>
                     </div>
                     <!-- shopping cart -->
-                    {{shopping_cart()}}
+                    <div id="shoppingcartplace">
+                        {{shopping_cart()}}
+                    </div>
                     <!-- /shopping cart -->
                     <div class="header-cart">
                         <div class="top-links center-sm">
@@ -64,13 +63,10 @@
     <!-- Navigation menu -->
     <div id="menu-container">
         <div class="container">
-            
             <div class="inner">
-            
                 <!-- main menu -->
                 <ul class="main-menu menu visible-lg">
-                
-                    <li class="active annonce"><a href={{"'".URL::to("/")."'"}}><i class="icon-home2"></i></a></li>
+                    <li class="active annonce"><a href="{{URL::to('/')}}"><i class="icon-home2"></i></a></li>
                     @foreach(category_menu() as $key=>$menu)
                     <li class="annonce">
                         @if($menu->parent=='0')
@@ -98,13 +94,11 @@
                         @endif
                     </li>
                     @endforeach
-
                 </ul>
                 <!-- /main menu -->
                 
                 <!-- mobile main menu -->
                 <div class="mobile-menu hidden-lg">
-                
                     <div id="dl-menu" class="dl-menuwrapper">
                         <button class="dl-trigger"><i class="icon-menu2"></i></button>
                         <ul class="dl-menu">

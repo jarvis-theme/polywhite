@@ -17,7 +17,7 @@ define(['jquery','flexslider','carouFredSel'], function($, flexslider, carouFred
                 easing: 'easeInBack',
                 useCSS: false,
                 animationSpeed: 1000,
-                slideshow: false,
+                slideshow: true,
                 smoothHeight: true,
                 start: function(slider) {
                     // wrap control nav inside container

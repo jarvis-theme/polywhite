@@ -3,7 +3,7 @@
     <div class="footer-powered alt">
         <div class="container">
             <div class="row">
-                @foreach($tautan as $key=>$group)
+                @foreach(all_menu() as $key=>$group)
                 <!-- WIDGET LINKS -->
                 <div class="col-xs-12 col-sm-6 col-lg-3">
                     <div class="widget wdgt-linklist">
@@ -79,11 +79,17 @@
                     <div class="widget widget-subs">
                         <ul class="card-icons">
                             @foreach(list_banks() as $value)
-                            <li>{{HTML::image(bank_logo($value))}}</li>
+                            <li>{{HTML::image(bank_logo($value), $value->bankdefault->nama, array('title'=>'Payment'))}}</li>
                             @endforeach
                             @foreach(list_payments() as $pay)
+                                @if($pay->nama == 'paypal' && $pay->aktif == 1)
+                                <li><img src="{{URL::to('img/bank/paypal.png')}}" alt="paypal" title="Payment" /></li>
+                                @endif
                                 @if($pay->nama == 'ipaymu' && $pay->aktif == 1)
-                                <li><img src="{{URL::to('img/bank/ipaymu.jpg')}}" alt="support ipaymu" /></li>
+                                <li><img src="{{URL::to('img/bank/ipaymu.jpg')}}" alt="support ipaymu" title="Payment" /></li>
+                                @endif
+                                @if($pay->nama == 'bitcoin' && $pay->aktif == 1)
+                                <li><img src="{{URL::to('img/bitcoin.png')}}" alt="Bitcoin" title="Payment" /></li>
                                 @endif
                             @endforeach
                             @if(count(list_dokus()) > 0 && list_dokus()->status == 1)

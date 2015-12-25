@@ -1,8 +1,8 @@
 <div class="breadcrumbs-wrapper">
-	<div class="">
+	<div>
 		<br>
 		<div class="row">
-			<div class="col-xs-12 col-sm-6 center-sm">
+			<div class="col-xs-12 col-sm-6 col-lg-9 center-sm">
 				<div class="breadcrumbs">
 					<ul class="unstyled">
 						<li><a href="{{URL::to('/')}}">Home</a></li>
@@ -14,7 +14,7 @@
 			
 			<div class="col-xs-12 col-sm-12 space20 visible-xs"></div>
 			
-			<div class="col-xs-12 col-sm-6 center-sm">
+			<div class="col-xs-12 col-sm-6 col-lg-3 center-sm">
 				<div class="display-mode">
 					<ul class="unstyled float-right"> Member Area </ul>
 				</div>
@@ -35,14 +35,14 @@
 				<div class="section  module-list-items">
 					<div class="cat-image">
 						<a href="{{URL::to($banner->url)}}">
-							{{HTML::image(banner_image_url($banner->gambar),'banner',array('width'=>'100%'))}}
+							{{HTML::image(banner_image_url($banner->gambar),'Info Promo',array('width'=>'100%'))}}
 						</a>
 					</div>
-				</div>      
+				</div>
 				@endforeach
 				<!-- /CHOOSE COLOR -->
 			</div>
-			<!-- /SIDE BAR -->                      
+			<!-- /SIDE BAR -->
 
 			<!-- MAIN CONTENT -->
 			<div class="col-xs-12 col-sm-8 col-lg-9 main">
@@ -56,7 +56,7 @@
 									<tr>
 										<td>E-Mail:</td>
 										<td>
-									  		<input type="text" placeholder="email" name="recoveryEmail" value="" required>
+									  		<input type="text" placeholder="email" name="recoveryEmail" required>
 								  		</td>
 									</tr>
 								</tbody>

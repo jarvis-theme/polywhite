@@ -1,4 +1,4 @@
-<div id="shoppingcartplace" class="header-cart" style="width: 100%;text-align:right;">
+<div id="shoppingcartplace" class="header-cart shpcart">
     <div class="inner">
         <div class="relative">
             <a href="#" class="btn-iconed">
@@ -30,7 +30,9 @@
                        </tbody>
                       </table>
                 </div>
-                <div class="footer"><a href="{{URL::to('checkout')}}">Checkout</a></div>
+                    @if(Shpcart::cart()->total_items() > 0)
+                    <div class="footer"><a href="{{URL::to('checkout')}}">Checkout</a></div>
+                    @endif
                 @endif
             </div>
             <!-- /CART ITEMS -->

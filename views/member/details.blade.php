@@ -1,9 +1,9 @@
 <!-- /BREADCRUMBS -->
 <div class="breadcrumbs-wrapper">
-    <div class="">
+    <div>
         <br>
         <div class="row">
-            <div class="col-xs-12 col-sm-6 center-sm">
+            <div class="col-xs-12 col-sm-6 col-lg-9 center-sm">
                 <div class="breadcrumbs">
                     <ul class="unstyled">
                         <li><a href="{{URL::to('/')}}">Home</a></li>
@@ -15,16 +15,15 @@
             
             <div class="col-xs-12 col-sm-12 space20 visible-xs"></div>
             
-            <div class="col-xs-12 col-sm-6 center-sm">
+            <div class="col-xs-12 col-sm-6 col-lg-3 center-sm">
                 <div class="display-mode">
                     <ul class="unstyled float-right"> Order History </ul>
                 </div>
             </div>
         </div>
-    
     </div>
 </div>
-<!-- /BREADCRUMBS -->               
+<!-- /BREADCRUMBS -->
 <!-- SIDEBAR + MAIN CONTENT CONTAINER -->
 <div class="main-content">
     <div class="container">
@@ -69,13 +68,13 @@
                                     
                                     <!-- carousel wrapper -->
                                     <div class="carousel-wrapper row" data-minitems="1" data-maxitems="4" data-loop="true" data-autoplay="false" data-slideshow-speed="3000" data-speed="300">
-                                        <ul class="products-container product-grid carousel-list portrait  ">
+                                        <ul class="products-container product-grid carousel-list portrait">
                                             @foreach(vertical_banner() as $key=>$banner)
                                             <li>
                                                 <div class="product">
                                                     <div class="product-thumbnail">
                                                         <a href="{{URL::to($banner->url)}}">
-                                                            {{HTML::image(banner_image_url($banner->gambar),'banner',array('width'=>'100%'))}}
+                                                            {{HTML::image(banner_image_url($banner->gambar),'Info Promo',array('width'=>'100%'))}}
                                                         </a>
                                                     </div>
                                                 </div>
@@ -95,7 +94,6 @@
 
             <!-- MAIN CONTENT -->
             <div class="col-xs-12 col-sm-8 col-lg-9 main">
-                
                 <!-- CART ITEMS -->
                 <div class="section">
                     <table class="my-cart">
@@ -112,7 +110,7 @@
                         </thead>
                         <tbody>
                         @if($setting->checkoutType==1)
-                            @foreach ($order as $item)
+                            @foreach (list_order() as $item)
                             <tr>
                                 <td>
                                     <div>
@@ -121,7 +119,7 @@
                                         @else
                                         <a>
                                         @endif
-                                        {{prefixOrder()}}{{$item->kodeOrder}}</a>
+                                        {{ prefixOrder().$item->kodeOrder }}</a>
                                     </div>
                                 </td>
                                 <td>
@@ -141,15 +139,13 @@
                                     @endif
                                 </td>
                                 <td class="hidden-xs">
-                                    <div class="qty-btngroup">
-                                    {{waktu($item->tanggalOrder)}}
-                                    </div>
+                                    <div class="qty-btngroup">{{ waktu($item->tanggalOrder) }}</div>
                                 </td>
                                 <td>
-                                    <span class="price">{{ price($item->total)}}</span>
+                                    <span class="price">{{ price($item->total) }}</span>
                                 </td>
                                 <td>
-                                    <span>{{ $item->noResi}}</span>
+                                    <span>{{ $item->noResi }}</span>
                                 </td>
                                 <td>
                                     @if($item->status!=2 || $item->status!=3)
@@ -164,9 +160,7 @@
                             @foreach ($inquiry as $item)
                             <tr>
                                 <td>
-                                    <div>
-                                        <a href="#">{{prefixOrder()}}{{$item->kodeInquiry}}</a>
-                                    </div>
+                                    <div><a href="#">{{prefixOrder().$item->kodeInquiry}}</a></div>
                                 </td>
                                 <td>
                                     @foreach ($item->detailInquiry as $detail)
@@ -182,16 +176,14 @@
                                     @endif
                                 </td>
                                 <td class="hidden-xs">
-                                    <div class="qty-btngroup">
-                                    {{waktu($item->tanggalOrder)}}
-                                    </div>
+                                    <div class="qty-btngroup">{{ waktu($item->tanggalOrder) }}</div>
                                 </td>
                                 <td>
-                                    <span class="price">{{ price($item->total)}}</span>
+                                    <span class="price">{{ price($item->total) }}</span>
                                 </td>
                                 <td>
                                     @if($item->status!=2 || $item->status!=3)
-                                    <a href="{{URL::to('konfirmasiorder/'.$item->id)}}" class="" title="Konfirmasi Order"><span class="icon-cart"></span></a>
+                                    <a href="{{URL::to('konfirmasiorder/'.$item->id)}}" title="Konfirmasi Order"><span class="icon-cart"></span></a>
                                     @else
                                     <span class="icon-checkmark"></span>
                                     @endif
@@ -206,12 +198,10 @@
                             </tr>
                             @endif
                         @else
-                            @foreach ($order as $item)
+                            @foreach (list_order() as $item)
                             <tr>
                                 <td>
-                                    <div>
-                                        <a href="#">{{prefixOrder()}}{{$item->kodeOrder}}</a>
-                                    </div>
+                                    <div><a href="#">{{ prefixOrder().$item->kodeOrder }}</a></div>
                                 </td>
                                 <td>
                                     @foreach ($item->detailorder as $detail)
@@ -237,12 +227,10 @@
                                     @endif
                                 </td>
                                 <td class="hidden-xs">
-                                    <div class="qty-btngroup">
-                                    {{waktu($item->tanggalOrder)}}
-                                    </div>
+                                    <div class="qty-btngroup">{{ waktu($item->tanggalOrder) }}</div>
                                 </td>
                                 <td>
-                                    <span class="price">{{ price($item->total)}}</span>
+                                    <span class="price">{{ price($item->total) }}</span>
                                 </td>
                                 <td>
                                     @if($item->status!=2 || $item->status!=3)
@@ -257,7 +245,8 @@
                         </tbody>
                     </table>
                 </div>
-                <!-- /CART ITEMS -->                
+                {{ list_order()->links() }}
+                <!-- /CART ITEMS -->
             </div>
             <!-- /MAIN CONTENT -->
         </div>

@@ -1,21 +1,19 @@
 ﻿<!-- breadcrumbs -->
 <br>
 <div class="breadcrumbs-wrapper">
-    <div class="">
-    
+    <div>
         <div class="row">
-            <div class="col-xs-12 col-sm-6 center-sm">
+            <div class="col-xs-12 col-sm-6 col-lg-9 center-sm">
                 <div class="breadcrumbs">
                     <ul class="unstyled">
-                        <li><a href="{{URL::to('/')}}">Home</a></li>
-                        {{$breadcrumb}}
+                        {{breadcrumbProduk(@$produk, ' <span>/</span> ;', ';', true, @$category, @$collection)}}
                     </ul>
                 </div>
             </div>
             
             <div class="col-xs-12 col-sm-12 space20 visible-xs"></div>
             
-            <div class="col-xs-12 col-sm-6 center-sm">
+            <div class="col-xs-12 col-sm-6 col-lg-3 center-sm">
                 <div class="display-mode">
                     <ul class="unstyled float-right"> Produk Kami </ul>
                 </div>
@@ -33,7 +31,7 @@
                 <!-- CATEGORIES LIST -->
                 <div class="accordionmenu section">
                     <h4 class="section-title">Kategori</h4>
-                    @foreach(category_menu() as $key=>$menu)
+                    @foreach(list_category() as $key=>$menu)
                         @if($menu->parent == '0')
                             <a class="menuitem submenuheader" href="{{category_url($menu)}}">{{$menu->nama}}</a>
                             @if($menu->anak->count() != 0)
@@ -71,14 +69,14 @@
                         @foreach(horizontal_banner() as $key=>$banner)
                             @if($key==0)
                             <a href="{{URL::to($banner->url)}}">
-                                {{HTML::image(banner_image_url($banner->gambar),'banner',array('width'=>'100%'))}}
+                                {{HTML::image(banner_image_url($banner->gambar),'Info Promo',array('width'=>'100%'))}}
                             </a>
                             @endif
                         @endforeach
                         </div>
                     </div>
-                    <div class="col-xs-12 col-sm-12 space20 visible-xs"></div>    
-                </div>      
+                    <div class="col-xs-12 col-sm-12 space20 visible-xs"></div>
+                </div>
                 <div class="clearfix"></div>
                 <!-- SUB CATEGORY -->
 
@@ -88,9 +86,10 @@
                         <div class="row">
                             <div class="col-xs-12 col-sm-6 center-sm">
                                 <div class="filtersgroup">
-                                    <div class="limit"><span>Show:</span>
+                                    <div class="limit">
+                                        <span>Show:</span>
                                         <select id="show" data-rel="{{URL::current()}}">
-                                            <option value="">-- Items --</option>
+                                            <option value="0">-- Items --</option>
                                             <option value="15" {{Input::get('show')==15?'selected="selected"':''}}>15</option>
                                             <option value="25" {{Input::get('show')==25?'selected="selected"':''}}>25</option>
                                             <option value="40" {{Input::get('show')==40?'selected="selected"':''}}>40</option>
@@ -105,16 +104,10 @@
                                 <div class="display-mode">
                                     <ul class="unstyled float-right">
                                         <li class="active">
-                                            <a id="grid-mode">
-                                                <span class="icon-grid-alt"></span>
-                                                Grid
-                                            </a>
+                                            <a id="grid-mode"><span class="icon-grid-alt"></span>Grid</a>
                                         </li>
                                         <li>
-                                            <a id="list-mode">
-                                                <span class="icon-list"></span>
-                                                List
-                                            </a>
+                                            <a id="list-mode"><span class="icon-list"></span>List</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -122,7 +115,7 @@
                         </div>
                     </div>
                 </div>
-            
+
                 <div id="product-list-container" class="section offer products-container portrait three-column" data-layout="grid">
                     <div class="row">
                         @foreach(list_product(Input::get('show'), @$category, @$collection) as $myproduk)
@@ -130,19 +123,19 @@
                             <div class="product" data-name="Demo Product1">
                                 <a href="{{product_url($myproduk)}}" class="product-link clearfix">
                                     @if(is_terlaris($myproduk))
-                                       <div class="ribbon special">Featured</div>
+                                       <div class="ribbon hot">Terlaris</div>
                                     @elseif(is_produkbaru($myproduk))
-                                       <span class="ribbon special">Baru</span>
+                                       <span class="ribbon new">Baru</span>
                                     @elseif(is_outstok($myproduk))
-                                        <div class="ribbon special">Kosong</div>
+                                        <div class="ribbon empty">Kosong</div>
                                     @endif
                                     <div class="product-thumbnail">
-                                        {{HTML::image(product_image_url($myproduk->gambar1,'medium'),'produk',array('title'=>'product','style'=>'min-height: 199px'))}}
+                                        {{HTML::image(product_image_url($myproduk->gambar1,'medium'), $myproduk->nama,array('title'=>'product','class'=>'image-prod'))}}
                                     </div>
                                 </a>
                                 
                                 <div class="product-info clearfix">
-                                    <h4 style="text-align: left;" class="title">
+                                    <h4 class="title left">
                                         <a href="{{product_url($myproduk)}}">{{short_description($myproduk->nama, 20)}}</a>
                                     </h4>
                                     @if($setting->checkoutType!=2)
@@ -158,7 +151,7 @@
                                     <div class="listdescription">
                                         <div class="text"><p>{{short_description($myproduk->deskripsi, 130)}}</p></div>
                                         <div class="add-to-cart">
-                                            <a onclick="window.location.href='{{product_url($myproduk)}}'" title="" class="btn btn-primary btn-iconed"><i class="icon-cart2"></i><span>Lihat Produk</span></a>
+                                            <a onclick="window.location.href='{{product_url($myproduk)}}'" class="btn btn-primary btn-iconed"><i class="icon-cart2"></i><span>Lihat Produk</span></a>
                                         </div>
                                         <!-- <ul class="links">
                                             <li><a onclick="" title="ADD TO WISHLIST" ><i class="icon-heart2"></i></a></li>
@@ -167,24 +160,24 @@
                                         <div class="ratings-list">
                                             <p></p>
                                             <p class="by">
-                                            <!-- <img src="image/stars-5.png"/> -->
+                                                <!-- <img src="image/stars-5.png"/> -->
                                             </p>
                                         </div>
                                     </div>
                                     <div class="details">
                                         <p></p>
                                         <p class="by">
-                                        <!-- <img src="image/stars-5.png"/> -->
+                                            <!-- <img src="image/stars-5.png"/> -->
                                         </p>
                                     </div>
                                     
-                                    <a onclick="" title="Add To Cart" class="add-to-cart">
+                                    <a title="Add To Cart" class="add-to-cart">
                                         <span class="icon-shopcart"></span>
                                     </a>
                                 </div>
                             </div>
                         </div>  
-                        @endforeach                                    
+                        @endforeach  
                     </div>
                 </div>
                 <!-- /PRODUCT AREA -->

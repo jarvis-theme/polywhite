@@ -1,4 +1,4 @@
-define(['jquery','hoverIntent','dl_menu','waypoint','nouislider','carouFredSel','pretty_check','mixitup','jq_zoom'], function($, hoverIntent, dlmenu, waypoint, noUiSlider,carouFredSel)
+define(['jquery','hoverIntent','dl_menu','waypoint','nouislider','carouFredSel','pretty_check','mixitup','jq_zoom','lib_packages'], function($, hoverIntent, dlmenu, waypoint, noUiSlider,carouFredSel)
 {
 	return new function()
 	{
