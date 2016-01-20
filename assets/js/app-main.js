@@ -8,7 +8,7 @@ require.config({
 		"bootstrap"	: {
 			deps : ['jquery'],
 		},
-		"caroufredsel" : {
+		"carouFredSel" : {
 			deps : ['jquery'],
 		},
 		"flexslider" : {
