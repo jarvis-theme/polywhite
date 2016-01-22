@@ -71,45 +71,47 @@
 <div class="home-container">
     <div class="container">
         <div class="row">
-            <h4 class="section-title">Produk Lainnya</h4>
-            <div class="tab-content row">
-                <!-- LATEST PRODUCTS -->
-                <div class="tab-pane animated animation-done rollIn active" data-animation="rollIn" id="top">
-                {{-- */ $i=1 /* --}}
-                @foreach(home_product() as $key=>$myproduk)
-                    <div class="col-xs-12 col-sm-6 col-lg-3 products-container">
-                        <div class="product">
-                            <a href="{{product_url($myproduk)}}" class="product-link clearfix">
-                                <div class="product-thumbnail" id="imgprod">
-                                    {{HTML::image(product_image_url($myproduk->gambar1,'medium'), $myproduk->nama)}}
-                                </div>
-                            </a>
-                            <div class="button-add"></div>
-                            
-                            <div class="product-info clearfix">
-                                <h4 class="title">
-                                    <a href="{{product_url($myproduk)}}">
-                                        {{short_description($myproduk->nama, 15)}}
-                                    </a>
-                                </h4>
-                                <div class="details">
-                                    <div class="product-price"> 
-                                        @if(!empty($myproduk->hargaCoret))
-                                        <span class="price-old">{{price($myproduk->hargaCoret)}}</span>
-                                        @endif
-                                        <span class="price-new">{{price($myproduk->hargaJual)}}</span>
+            <div class="col-xs-12 col-sm-12">
+                <h4 class="section-title left">Produk Lainnya</h4>
+                <div class="tab-content row">
+                    <!-- LATEST PRODUCTS -->
+                    <div class="tab-pane animated animation-done rollIn active" data-animation="rollIn" id="top">
+                    {{-- */ $i=1 /* --}}
+                    @foreach(home_product() as $key=>$myproduk)
+                        <div class="col-xs-12 col-sm-6 col-lg-3 products-container">
+                            <div class="product">
+                                <a href="{{product_url($myproduk)}}" class="product-link clearfix">
+                                    <div class="product-thumbnail" id="imgprod">
+                                        {{HTML::image(product_image_url($myproduk->gambar1,'medium'), $myproduk->nama)}}
+                                    </div>
+                                </a>
+                                <div class="button-add"></div>
+                                
+                                <div class="product-info clearfix">
+                                    <h4 class="title">
+                                        <a href="{{product_url($myproduk)}}">
+                                            {{short_description($myproduk->nama, 15)}}
+                                        </a>
+                                    </h4>
+                                    <div class="details">
+                                        <div class="product-price"> 
+                                            @if(!empty($myproduk->hargaCoret))
+                                            <span class="price-old">{{price($myproduk->hargaCoret)}}</span>
+                                            @endif
+                                            <span class="price-new">{{price($myproduk->hargaJual)}}</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        @if($i%4==0)
+                        <div class="clearfix hidden-xs"></div>
+                        @endif
+                        {{-- */ $i++ /* --}}
+                    @endforeach
                     </div>
-                    @if($i%4==0)
-                    <div class="clearfix hidden-xs"></div>
-                    @endif
-                    {{-- */ $i++ /* --}}
-                @endforeach
+                    <!-- / LATEST PRODUCTS -->
                 </div>
-                <!-- / LATEST PRODUCTS -->
             </div>
         </div>
     </div>

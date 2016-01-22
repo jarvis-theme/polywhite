@@ -7,7 +7,7 @@
                 <!-- logo -->
                 <div class="col-xs-7 col-sm-7 logo-container">
                     <strong class="logo ">
-                    @if(@getimagesize(URL::to( logo_image_url() )))
+                    @if( logo_image_url() )
                         <a href="{{URL::to('home')}}">
                             {{HTML::image(logo_image_url(),'logo',array('style'=>'max-height: 100px'))}}
                         </a>
@@ -71,16 +71,16 @@
                     <li class="annonce">
                         @if($menu->parent=='0')
                         <a href="{{category_url($menu)}}">{{$menu->nama}}</a>
-                            @foreach($anMenu as $key3=>$bug)
-                            @if($bug->parent==$menu->id)
+                            @if(count($menu->anak) > 0)
                             <ul class="sub_menu">
                                 <!--SUbmenu Starts-->
-                                @foreach($anMenu as $key1=>$submenu)
+                                @foreach($menu->anak as $key1=>$submenu)
                                     @if($submenu->parent==$menu->id)
                                     <li><a href="{{category_url($submenu)}}">{{$submenu->nama}}</a>
-                                        @foreach($anMenu as $key3=>$bug2)
+                                        @foreach($submenu->anak as $key3=>$bug2)
                                         @if($bug2->parent==$submenu->id)
                                         <ul>
+                                            <li><a href="{{category_url($bug2)}}">{{$bug2->nama}}</a>
                                         </ul>
                                         @endif
                                         @endforeach
@@ -89,7 +89,6 @@
                                 @endforeach
                             </ul>
                             @endif
-                            @endforeach
                         <!--SUbmenu Ends-->
                         @endif
                     </li>

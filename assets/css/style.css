@@ -2278,8 +2278,8 @@ color: #FFF;
 @media screen and (max-width: 768px){
 	.home-container .tab-content .product {float:none !important}
 }
-.section  h4.section-title {font-size:18px;}
-.section .section-title {
+.section h4.section-title, .section-title {font-size:18px;}
+.section .section-title, .section-title {
 	text-transform: uppercase;
 	font-weight: bold;
 	padding-bottom: 12px;
@@ -4276,3 +4276,7 @@ body, h1, h2, h3, h4, h5, h6, input, select, textarea, .form-control, button {
 .autowidth{width: auto !important}.compact{display: compact}#button-cart{padding: 15px 20px !important}
 .sosmed{margin: 20px 0px; border-top: 1px solid #EEE; padding: 20px 0px}.img-otherprod{height:220px}
 .shpcart{width: 100%;text-align:right}.label{color: #fefefe}.blogtitle{margin: 0}
+.card-icons img{border-radius: 5px}.slides img{height:435px;width:auto}
+@media screen and (max-width: 1023px){
+	.slides img{height: auto}
+}
