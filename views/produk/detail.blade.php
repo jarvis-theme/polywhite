@@ -57,7 +57,7 @@
                         @foreach(vertical_banner() as $key=>$banner)
                         <div class="section banner-show banner">
                             <a href="{{URL::to($banner->url)}}">
-                                {{HTML::image(banner_image_url($banner->gambar),'Info Promo',array('width'=>'100%'))}}
+                                {{HTML::image(banner_image_url($banner->gambar),'Info Promo',array('width'=>'100%'))}} 
                             </a>
                         </div>
                         @endforeach
@@ -74,7 +74,7 @@
                             <div class="col-xs-12 col-sm-6">
                                 <div class="product-album" >
                                     <a href="#">
-                                        {{HTML::image(product_image_url($produk->gambar1,'large'),$produk->nama)}}
+                                        {{HTML::image(product_image_url($produk->gambar1,'large'),$produk->nama)}} 
                                     </a>
                     
                                     <ul class="unstyled ">
@@ -142,7 +142,7 @@
                                                 <div class="space30 clearfix"></div>
                                                 
                                                 <div class="clearfix">
-                                                    Jumlah : <input class="compact" type="text" name='qty' value="1" size="2" id="qty-input">
+                                                    Jumlah : <input class="compact" type="text" name="qty" value="1" size="2" id="qty-input">
                                                 </div>
                                                 
                                                 <div class="space30 clearfix"></div>
@@ -220,10 +220,10 @@
                                 <ul>
                                     <li><span>Berat:</span> {{$produk->berat}} gram</li>
                                     <li><span>Stock:</span> {{$produk->stok}}</li>
-                                    <li><span>Vendor:</span> {{$produk->vendor}}</li>
+                                    <li><span>Brand:</span> {{$produk->vendor}}</li>
                                 </ul>
                             </div>
-                            <div class="tab-pane fade" id="review">{{pluginTrustklik()}}</div>
+                            <div class="tab-pane fade" id="review">{{ pluginComment(product_url($produk), @$produk) }}</div>
                         </div>
                     </div>
 
@@ -251,7 +251,7 @@
                                             </ul>
                                         </div>
                                         <!-- /carousel control nav direction -->
-                              
+
                                         <!-- carousel wrapper -->
                                         <div class="carousel-wrapper row" data-minitems="1" data-maxitems="4" data-loop="true" data-autoplay="false" data-slideshow-speed="3000" data-speed="300">
                                             <ul class="products-container product-grid carousel-list portrait ">
