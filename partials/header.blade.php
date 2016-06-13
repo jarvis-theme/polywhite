@@ -67,6 +67,7 @@
                 <!-- main menu -->
                 <ul class="main-menu menu visible-lg">
                     <li class="active annonce"><a href="{{URL::to('/')}}"><i class="icon-home2"></i></a></li>
+                    @if(count(category_menu()) > 0)
                     @foreach(category_menu() as $key=>$menu)
                     <li class="annonce">
                         @if($menu->parent=='0')
@@ -93,6 +94,7 @@
                         @endif
                     </li>
                     @endforeach
+                    @endif
                 </ul>
                 <!-- /main menu -->
                 
@@ -104,6 +106,7 @@
                             <li class="active">
                                 <a href={{URL::to("/")}}><i class="icon-home"></i></a>
                             </li>
+                            @if(count(category_menu()) > 0)
                             @foreach(category_menu() as $key=>$menu)
                             <li>
                                 <?php $numItems = count($anMenu);$i = 0; ?>
@@ -119,6 +122,7 @@
                                 </ul>
                             </li>
                             @endforeach
+                            @endif
                         </ul>
                     </div>
                     <!-- /dl-menuwrapper -->
