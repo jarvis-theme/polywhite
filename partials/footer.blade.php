@@ -54,19 +54,9 @@
                                     <i class="icon-mail6"></i>
                                 </div>
                                 <div class="media-body">
-                                    <p><a href="mailto:{{$kontak->email}}">{{@$kontak->email}}</a></p>
+                                    <p><a href="mailto:{{@$kontak->email}}">{{@$kontak->email}}</a></p>
                                 </div>
                             </div>
-                            @if($kontak->ym)
-                            <div class="media">
-                                <div class="pull-left">
-                                    <i class="icon-chat2"></i>
-                                </div>
-                                <div class="media-body">
-                                    <p>{{ymyahoo(@$kontak->ym)}}</p>
-                                </div>
-                            </div>
-                            @endif
                         </div>
                     </div>
                     <div class="space40 hidden-lg"></div>
@@ -98,7 +88,7 @@
                             <li><img src="{{URL::to('img/bank/doku.jpg')}}" alt="support doku myshortcart" title="Doku" /></li>
                             @endif
                             @if(count(list_veritrans()) > 0 && list_veritrans()->status == 1 && list_veritrans()->type == 1)
-                            <li><img src="{{url('img/bank/veritrans.png')}}" alt="Veritrans" title="Veritrans"></li>
+                            <li><img class="midtrans-logo" src="{{url('img/bank/midtrans.png')}}" alt="Midtrans" title="Midtrans"></li>
                             @endif
                         </ul>
                     </div>

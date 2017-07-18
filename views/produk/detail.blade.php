@@ -18,7 +18,7 @@
               
                 <div class="col-xs-12 col-sm-6 center-sm">
                     <div class="display-mode">
-                        <!-- <ul class="unstyled float-right"> PAUL SMITH SHOES & ACCESSORIES </ul> -->
+                        <!-- <ul class="unstyled float-right"> {{$produk->nama}} </ul> -->
                     </div>
                 </div>
             </div>
@@ -52,12 +52,13 @@
                     </div>
 
                     <!-- BANNER MODULE -->
-                    <div class="accordionmenu section">
+                    <div class="mt20">
                         <!-- <h4 class="section-title">BANNER</h4> -->
+                        {{--*/ $i=1 /*--}}
                         @foreach(vertical_banner() as $key=>$banner)
-                        <div class="section banner-show banner">
+                        <div class="mb10">
                             <a href="{{URL::to($banner->url)}}">
-                                {{HTML::image(banner_image_url($banner->gambar),'Info Promo',array('width'=>'100%'))}} 
+                                {{HTML::image(banner_image_url($banner->gambar), 'Info Promo '.$i++)}} 
                             </a>
                         </div>
                         @endforeach
@@ -72,20 +73,20 @@
                     <div class="section product-single">
                         <div class="row">
                             <div class="col-xs-12 col-sm-6">
-                                <div class="product-album" >
+                                <div class="product-album">
                                     <a href="#">
-                                        {{HTML::image(product_image_url($produk->gambar1,'large'),$produk->nama)}} 
+                                        {{HTML::image(product_image_url($produk->gambar1,'large'), $produk->nama, array("onerror"=>"this.src='//d3kamn3rg2loz7.cloudfront.net/img/no-image-product.png'"))}} 
                                     </a>
                     
                                     <ul class="unstyled ">
                                         @if($produk->gambar2)
-                                        <li class="slides"><a href="javascript:void(0);">{{HTML::image(product_image_url($produk->gambar2, 'medium'), $produk->nama.'1')}}</a></li>
+                                        <li class="slides"><a href="javascript:void(0);">{{HTML::image(product_image_url($produk->gambar2, 'thumb'), $produk->nama.'1', array("onerror"=>"this.src='//d3kamn3rg2loz7.cloudfront.net/img/no-image-product.png'"))}}</a></li>
                                         @endif
                                         @if($produk->gambar3)
-                                        <li class="slides"><a href="javascript:void(0);">{{HTML::image(product_image_url($produk->gambar3, 'medium'), $produk->nama.'2')}}</a></li>
+                                        <li class="slides"><a href="javascript:void(0);">{{HTML::image(product_image_url($produk->gambar3, 'thumb'), $produk->nama.'2', array("onerror"=>"this.src='//d3kamn3rg2loz7.cloudfront.net/img/no-image-product.png'"))}}</a></li>
                                         @endif
                                         @if($produk->gambar4)
-                                        <li class="slides"><a href="javascript:void(0);">{{HTML::image(product_image_url($produk->gambar4, 'medium'), $produk->nama.'3')}}</a></li>
+                                        <li class="slides"><a href="javascript:void(0);">{{HTML::image(product_image_url($produk->gambar4, 'thumb'), $produk->nama.'3', array("onerror"=>"this.src='//d3kamn3rg2loz7.cloudfront.net/img/no-image-product.png'"))}}</a></li>
                                         @endif
                                     </ul>
                                 </div>
@@ -120,7 +121,6 @@
                                             @endif
                                         </div>
                                     @endif  
-                                        <br>
                                         <form action="#" id="addorder">
                                         @if($setting->checkoutType==3 && !$po)
                                             <span>Belum memasuki periode pemesanan</span>
@@ -138,8 +138,6 @@
                                                     </select>
                                                     @endif
                                                 </div>
-                                                
-                                                <div class="space30 clearfix"></div>
                                                 
                                                 <div class="clearfix">
                                                     Jumlah : <input class="compact" type="text" name="qty" value="1" size="2" id="qty-input">
@@ -165,8 +163,6 @@
                                                 </select>
                                                 @endif
                                                 
-                                                <div class="space30 clearfix"></div>
-
                                                 <div class="clearfix">
                                                     Jumlah : <input type="text" class="qty compact" name="qty" value="1" size="2" id="qty-input">
                                                 </div>
@@ -220,7 +216,7 @@
                                 <ul>
                                     <li><span>Berat:</span> {{$produk->berat}} gram</li>
                                     <li><span>Stock:</span> {{$produk->stok}}</li>
-                                    <li><span>Brand:</span> {{$produk->vendor}}</li>
+                                    <li><span>Brand:</span> {{!empty($produk->vendor)?$produk->vendor:'-'}}</li>
                                 </ul>
                             </div>
                             <div class="tab-pane fade" id="review">{{ pluginComment(product_url($produk), @$produk) }}</div>
@@ -235,6 +231,7 @@
                                 <div class="col-xs-12 col-sm-12">
                                     <h4 class="section-title">RELATED PRODUCTS</h4>
                                     <div class="section-inner">
+                                        @if(count(other_product($produk))>1)
                                         <!-- carousel control nav direction -->
                                         <div class="carousel-direction-arrows">
                                             <ul class="direction-nav carousel-direction">
@@ -251,10 +248,11 @@
                                             </ul>
                                         </div>
                                         <!-- /carousel control nav direction -->
+                                        @endif
 
                                         <!-- carousel wrapper -->
-                                        <div class="carousel-wrapper row" data-minitems="1" data-maxitems="4" data-loop="true" data-autoplay="false" data-slideshow-speed="3000" data-speed="300">
-                                            <ul class="products-container product-grid carousel-list portrait ">
+                                        <div class="row {{count(other_product($produk))>1?'carousel-wrapper':''}}" data-minitems="1" data-maxitems="4" data-loop="true" data-autoplay="false" data-slideshow-speed="3000" data-speed="300">
+                                            <ul class="products-container product-grid carousel-list portrait">
                                                 @foreach(other_product($produk) as $myproduk)
                                                 <li>
                                                     <div class="product">
@@ -267,7 +265,7 @@
                                                             <div class="ribbon empty">Kosong</div>
                                                             @endif
                                                             <div class="product-thumbnail">
-                                                                {{HTML::image(product_image_url($myproduk->gambar1,'medium'), $myproduk->nama, array('class' => 'img-otherprod'))}}
+                                                                {{HTML::image(product_image_url($myproduk->gambar1,'medium'), $myproduk->nama, array('class' => 'img-otherprod', "onerror" => "this.src='//d3kamn3rg2loz7.cloudfront.net/img/no-image-product.png'"))}}
                                                             </div>
                                                         </a>
                                                         <div class="product-info clearfix">

@@ -37,7 +37,7 @@
                                                 <div class="ribbon empty">Kosong</div>
                                             @endif
                                             <div class="product-thumbnail">
-                                                {{HTML::image(product_image_url($myproduk->gambar1,'medium'),$myproduk->nama)}}
+                                                {{ HTML::image(product_image_url($myproduk->gambar1,'medium'),$myproduk->nama, array("onerror"=>"this.src='//d3kamn3rg2loz7.cloudfront.net/img/no-image-product.png'")) }}
                                             </div>
                                         </a>
                                         
@@ -78,11 +78,11 @@
                     <div class="tab-pane animated animation-done rollIn active" data-animation="rollIn" id="top">
                     {{-- */ $i=1 /* --}}
                     @foreach(home_product() as $key=>$myproduk)
-                        <div class="col-xs-12 col-sm-6 col-lg-3 products-container">
+                        <div class="col-xs-12 col-sm-6 col-lg-3 products-container mb30">
                             <div class="product">
                                 <a href="{{product_url($myproduk)}}" class="product-link clearfix">
                                     <div class="product-thumbnail" id="imgprod">
-                                        {{HTML::image(product_image_url($myproduk->gambar1,'medium'), $myproduk->nama)}}
+                                        {{HTML::image(product_image_url($myproduk->gambar1,'medium'), $myproduk->nama, array("onerror"=>"this.src='//d3kamn3rg2loz7.cloudfront.net/img/no-image-product.png'"))}}
                                     </div>
                                 </a>
                                 <div class="button-add"></div>
@@ -125,13 +125,12 @@
                     <!-- carousel wrapper -->
                     <div class="carousel-wrapper row">
                         <ul class="products-container product-grid carousel-list landscape">
+                            {{--*/ $j=1; /*--}}
                             @foreach(horizontal_banner() as $banner) 
                             <li>
-                                <div class="product">
-                                    <a href="{{URL::to($banner->url)}}" class="product-link clearfix">
-                                        <div>{{HTML::image(banner_image_url($banner->gambar),'Info Promo')}}</div>
-                                    </a>
-                                </div>
+                                <a href="{{URL::to($banner->url)}}" class="product-link clearfix">
+                                    <div>{{HTML::image(banner_image_url($banner->gambar),'Info Promo '.$j++)}}</div>
+                                </a>
                             </li>
                             @endforeach
                         </ul>

@@ -52,7 +52,6 @@
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 section">
                             <div class="cat-image"><h1>{{$data->judul}}</h1></div>
-                            <small>{{$data->up}}</small>
                         </div>
                         <div class="col-xs-12 col-sm-12 space20 visible-xs"></div>
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 desc-out">

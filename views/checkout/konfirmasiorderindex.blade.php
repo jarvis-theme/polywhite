@@ -18,7 +18,7 @@
                 
                 <div class="col-xs-12 col-sm-6 col-lg-3 center-sm">
                     <div class="display-mode">
-                        <ul class="unstyled float-right"> Konfirmasi Pembayaran </ul>
+                        <!-- <ul class="unstyled float-right"> Konfirmasi Pembayaran </ul> -->
                     </div>
                 </div>
             </div>
@@ -32,22 +32,19 @@
             <div class="row">
                 <!-- SIDE BAR -->
                 <div class="col-xs-12 col-sm-4 col-lg-3 pull-left sidebar">
-                    <!-- CHOOSE COLOR -->
-                    <div class="section  module-list-items">
-                        <!-- <h4 class="section-title">Banner</h4> -->
-                        <div class="section-inner">
-                            @foreach(vertical_banner() as $key=>$banner)
-                            <div class="section">
-                                <div class="cat-image">
-                                    <a href="{{URL::to($banner->url)}}">
-                                        {{HTML::image(banner_image_url($banner->gambar), 'Info Promo',array('width'=>'100%'))}}
-                                    </a>
-                                </div>
-                            </div>
-                            @endforeach
+                    <div class="space50 clearfix"></div>
+                    <!-- SIDE BANNER -->
+                    <div class="mt20">
+                        {{--*/ $i=1 /*--}}
+                        @foreach(vertical_banner() as $key=>$banner)
+                        <div class="mb10">
+                            <a href="{{URL::to($banner->url)}}">
+                                {{HTML::image(banner_image_url($banner->gambar),'Info Promo '.$i++)}}
+                            </a>
                         </div>
+                        @endforeach
                     </div>
-                    <!-- /CHOOSE COLOR -->
+                    <!-- SIDE BANNER -->
                 </div>
                 <!-- /SIDE BAR -->
 
@@ -70,7 +67,7 @@
                                         {{-- */ $konfirmasi='' /* --}}
                                         @endif
 
-                                        {{Form::open(array('url'=>$konfirmasi,'method'=>'post','class'=>'form-horizontal contact'))}}
+                                        {{Form::open(array('url'=>$konfirmasi,'method'=>'post','class'=>'form-horizontal confirm'))}}
                                             <div class="form-group">
                                                 <div class="col-xs-12 col-sm-12 col-md-9">
                                                     <input type="text" class="form-control" placeholder="Kode Order" name="kodeorder" placeholder="Nama" required>

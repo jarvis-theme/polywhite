@@ -15,7 +15,7 @@
             
             <div class="col-xs-12 col-sm-6 col-lg-3 center-sm">
                 <div class="display-mode">
-                    <ul class="unstyled float-right"> Produk Kami </ul>
+                    <!-- <ul class="unstyled float-right top-title"> Produk Kami </ul> -->
                 </div>
             </div>
         </div>
@@ -66,10 +66,11 @@
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 section">
                         <div class="cat-image">
+                        {{--*/ $i=1 /*--}}
                         @foreach(horizontal_banner() as $key=>$banner)
                             @if($key==0)
                             <a href="{{URL::to($banner->url)}}">
-                                {{HTML::image(banner_image_url($banner->gambar),'Info Promo',array('width'=>'100%'))}}
+                                {{HTML::image(banner_image_url($banner->gambar),'Info Promo '.$i++,array('width'=>'100%'))}}
                             </a>
                             @endif
                         @endforeach
@@ -130,7 +131,7 @@
                                         <div class="ribbon empty">Kosong</div>
                                     @endif
                                     <div class="product-thumbnail">
-                                        {{HTML::image(product_image_url($myproduk->gambar1,'medium'), $myproduk->nama,array('title'=>'product','class'=>'image-prod'))}}
+                                        {{HTML::image(product_image_url($myproduk->gambar1,'medium'), $myproduk->nama,array('title'=>'product','class'=>'image-prod',"onerror"=>"this.src='//d3kamn3rg2loz7.cloudfront.net/img/no-image-product.png'"))}}
                                     </div>
                                 </a>
                                 

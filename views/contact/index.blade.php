@@ -16,7 +16,7 @@
                 
                 <div class="col-xs-12 col-sm-6 col-lg-3 center-sm">
                     <div class="display-mode">
-                        <ul class="unstyled float-right"> Kontak Kami </ul>
+                        <!-- <ul class="unstyled float-right top-title"> Kontak Kami </ul> -->
                     </div>
                 </div>
             </div>
@@ -57,7 +57,7 @@
                                         <i class="icon-mail6"></i>
                                     </div>
                                     <div class="media-body">
-                                        <p><a href="mailto:{{$kontak->email}}">{{@$kontak->email}}</a></p>
+                                        <p><a href="mailto:{{@$kontak->email}}">{{@$kontak->email}}</a></p>
                                     </div>
                                 </div>
                             </div>
@@ -65,15 +65,16 @@
                     </div>
                     @endif
                     <div class="clearfix "></div>
-                    @foreach(vertical_banner() as $key=>$banner)
-                    <div class="section  module-list-items">
-                        <div class="cat-image">
+                    {{--*/ $i=1 /*--}}
+                    <div class="mt20">
+                        @foreach(vertical_banner() as $key=>$banner)
+                        <div class="mb10">
                             <a href="{{URL::to($banner->url)}}">
-                                {{HTML::image(banner_image_url($banner->gambar), 'Info Promo', array('width'=>'100%'))}}
+                                {{HTML::image(banner_image_url($banner->gambar), 'Info Promo '.$i++)}}
                             </a>
                         </div>
+                        @endforeach
                     </div>
-                    @endforeach
                     <div class="clearfix"></div>
                     <!-- /CHOOSE COLOR -->
                 </div>
@@ -106,7 +107,7 @@
                                         </div>
                                         <div class="form-group">
                                             <div class="col-xs-12 col-sm-12">
-                                                <input required name="emailKontak" id="email" type="text" class="form-control" id="inputEmail" name="email" placeholder="Email">
+                                                <input required name="emailKontak" id="email" type="email" class="form-control" id="inputEmail" name="email" placeholder="Email">
                                             </div>
                                             <!-- <label for="inputEmail" class="col-xs-12 col-sm-3 required">Email</label> -->
                                         </div>

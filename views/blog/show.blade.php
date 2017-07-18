@@ -19,7 +19,7 @@
                 
                 <div class="col-xs-12 col-sm-6 col-lg-3 center-sm">
                     <div class="display-mode">
-                        <ul class="unstyled float-right"> Blog </ul>
+                        <!-- <ul class="unstyled float-right top-title"> Blog </ul> -->
                     </div>
                 </div>
             </div>
@@ -54,7 +54,7 @@
                                 <li>
                                     <a href="{{blog_url($recent)}}">{{$recent->judul}}</a>
                                     <br />
-                                    <small class="blog-time">diposting {{waktuTgl($recent->updated_at)}}</small>
+                                    <small class="blog-time">diposting {{waktuTgl($recent->created_at)}}</small>
                                 </li>
                                 @endforeach
                             </ul>
@@ -68,8 +68,12 @@
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 section">
                         <div class="cat-image"><h1 class="section-title">{{$detailblog->judul}}</h1></div>
-                        <small class="dateblog">Date: {{waktuTgl($detailblog->updated_at)}} <span>&nbsp;&nbsp; <i class="icon-tag"></i>&nbsp;<a href="{{URL::to('blog/category/'.$detailblog->kategori->nama)}}">{{$detailblog->kategori->nama}}</a></span></small>              
-                        <!-- <small>Date: 12 Januari 2014 <span>&nbsp;&nbsp; Kategori: Book</span></small> -->
+                        <small class="dateblog">
+                            Date: {{waktuTgl($detailblog->created_at)}}
+                            @if(!empty($detailbllog->kategori))
+                            <span>&nbsp;&nbsp; <i class="icon-tag"></i>&nbsp;<a href="{{URL::to('blog/category/'.$detailblog->kategori->nama)}}">{{$detailblog->kategori->nama}}</a></span>
+                            @endif
+                        </small>              
                     </div>
                     
                     <div class="col-xs-12 col-sm-12 space20 visible-xs"></div>
@@ -83,14 +87,16 @@
 
                     <div class="section zerotop">
                         <div class="col-xs-4 col-sm-12" >
+                            @if(prev_blog($detailblog))
                             <ul class="direction-nav pagination-direction float-left">
                                 <li><a href="{{blog_url(prev_blog())}}" class="btn btn-prev {{ @$prev->id==''?'disabled':'' }}"><span class="icon-arrow-left10"></span></a></li>
-                                <!-- <li><a href="{{@$next->slug}}" class="btn btn-next {{ @$next->id==''?'disabled':'' }}"><span class="icon-arrow-right9"></span></a></li> -->
                             </ul>
+                            @endif
+                            @if(next_blog($detailblog))
                             <ul class="direction-nav pagination-direction float-right">
-                                <!-- <li><a href="{{@$prev->slug}}" class="btn btn-prev {{ @$prev->id==''?'disabled':'' }}"><span class="icon-arrow-left10"></span></a></li> -->
                                 <li><a href="{{blog_url(next_blog())}}" class="btn btn-next {{ @$next->id==''?'disabled':'' }}"><span class="icon-arrow-right9"></span></a></li>
                             </ul>
+                            @endif
                         </div>
                     </div>
                     <div class="clearfix "></div>   

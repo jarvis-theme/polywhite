@@ -17,7 +17,7 @@
             
             <div class="col-xs-12 col-sm-6 col-lg-3 center-sm">
                 <div class="display-mode">
-                    <ul class="unstyled float-right"> Order History </ul>
+                    <!-- <ul class="unstyled float-right"> Order History </ul> -->
                 </div>
             </div>
         </div>
@@ -35,77 +35,42 @@
                     <h4 class="section-title">Menu Member</h4>
                     <div class="section-inner">
                         <ul class="unstyled pretty-list arrow-list cl-effect-1">
-                            <li><a href="{{URL::to('member')}}">Order History</a></li>
+                            <li><a class="active" href="{{URL::to('member')}}">Order History</a></li>
                             <li><a href="{{URL::to('member/'.$user->id.'/edit')}}">Profil Information</a></li>
                         </ul>
                     </div>
                 </div>
                 <!-- /CHOOSE COLOR -->
                 
-                <!-- Latest products -->
-                <div class="section carousel-iframe">
-                    <div class="container">
-                        <div class="row carousel-iframe offer">
-                            <div class="col-xs-12 col-sm-12">
-                                <h4 class="section-title">Banner</h4>
-                                <div class="section-inner">
-                                    <!-- carousel control nav direction -->
-                                    <div class="carousel-direction-arrows">
-                                        <ul class="direction-nav carousel-direction">
-                                            <li>
-                                                <a class="crsl-prev btn" href="#">
-                                                    <span class="icon-arrow-left10"></span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a class="crsl-next btn" href="#">
-                                                    <span class="icon-arrow-right9"></span>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <!-- /carousel control nav direction -->
-                                    
-                                    <!-- carousel wrapper -->
-                                    <div class="carousel-wrapper row" data-minitems="1" data-maxitems="4" data-loop="true" data-autoplay="false" data-slideshow-speed="3000" data-speed="300">
-                                        <ul class="products-container product-grid carousel-list portrait">
-                                            @foreach(vertical_banner() as $key=>$banner)
-                                            <li>
-                                                <div class="product">
-                                                    <div class="product-thumbnail">
-                                                        <a href="{{URL::to($banner->url)}}">
-                                                            {{HTML::image(banner_image_url($banner->gambar),'Info Promo',array('width'=>'100%'))}}
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            @endforeach
-                                        </ul>
-                                    </div>
-                                    <!-- /CAROUSEL WRAPPER -->
-                                </div>
-                            </div>
-                        </div>
+                <!-- SIDE BANNER -->
+                <div class="mt20">
+                    {{--*/ $i=1 /*--}}
+                    @foreach(vertical_banner() as $key=>$banner)
+                    <div class="mb10">
+                        <a href="{{URL::to($banner->url)}}">
+                            {{HTML::image(banner_image_url($banner->gambar),'Info Promo '.$i++)}}
+                        </a>
                     </div>
+                    @endforeach
                 </div>
-                <!-- LATEST PRODUCTS -->
+                <!-- SIDE BANNER -->
             </div>
             <!-- /SIDE BAR -->
 
             <!-- MAIN CONTENT -->
             <div class="col-xs-12 col-sm-8 col-lg-9 main">
                 <!-- CART ITEMS -->
-                <div class="section">
-                    <table class="my-cart">
+                <div class="mt10 table-responsive">
+                    <table class="table table-striped">
                         <thead>
                             <tr>
                                 <th class="product-thumbnail">Kode</th>
                                 <th class="product-name">Detail Order</th>
-                                <th class="product-qty hidden-xs">Tgl Order</th>
+                                <th class="product-qty">Tgl Order</th>
                                 <th class="product-price">Total</th>
                                 <th class="product-thumbnail">No Resi</th>
                                 <th class="product-action"></th>
-                                 <a class="pr_name" href="#">{{date('d M Y')}}</a>
+                                <a class="pr_name" href="#">{{date('d M Y')}}</a>
                             </tr>
                         </thead>
                         <tbody>
@@ -133,12 +98,12 @@
                                     @elseif($item->status==2)
                                         <small>Status: </small><span class="label label-info">Pembayaran diterima</span>
                                     @elseif($item->status==3)
-                                        <small>Status: </small><span class="label label-info">Terkirim</span>
+                                        <small>Status: </small><span class="label label-success">Terkirim</span>
                                     @elseif($item->status==4)
-                                        <small>Status: </small><span class="label label-warning">Batal</span>
+                                        <small>Status: </small><span class="label label-default">Batal</span>
                                     @endif
                                 </td>
-                                <td class="hidden-xs">
+                                <td>
                                     <div class="qty-btngroup">{{ waktu($item->tanggalOrder) }}</div>
                                 </td>
                                 <td>
@@ -149,7 +114,7 @@
                                 </td>
                                 <td>
                                     @if($item->status!=2 || $item->status!=3)
-                                    <a href="{{URL::to('konfirmasiorder/'.$item->id)}}" class="" title="Konfirmasi Order"><span class="icon-cart"></span></a>
+                                    <a href="{{URL::to('konfirmasiorder/'.$item->id)}}" title="Konfirmasi Order"><span class="icon-eye"></span></a>
                                     @else
                                     <span class="icon-checkmark"></span>
                                     @endif
@@ -175,7 +140,7 @@
                                         <span class="label label-info">Batal</span>
                                     @endif
                                 </td>
-                                <td class="hidden-xs">
+                                <td>
                                     <div class="qty-btngroup">{{ waktu($item->tanggalOrder) }}</div>
                                 </td>
                                 <td>
@@ -183,7 +148,7 @@
                                 </td>
                                 <td>
                                     @if($item->status!=2 || $item->status!=3)
-                                    <a href="{{URL::to('konfirmasiorder/'.$item->id)}}" title="Konfirmasi Order"><span class="icon-cart"></span></a>
+                                    <a href="{{URL::to('konfirmasiorder/'.$item->id)}}" title="Konfirmasi Order"><span class="icon-eye"></span></a>
                                     @else
                                     <span class="icon-checkmark"></span>
                                     @endif
@@ -219,14 +184,14 @@
                                     @elseif($item->status==4)
                                     <span class="label label-info">Pembayaran lunas</span>
                                     @elseif($item->status==5)
-                                    <span class="label label-info">Terkirim</span>
+                                    <span class="label label-success">Terkirim</span>
                                     @elseif($item->status==6)
-                                    <span class="label label-info">Batal</span>
+                                    <span class="label label-default">Batal</span>
                                     @elseif($item->status==7)
                                     <span class="label label-info">Konfirmasi Pelunasan diterima</span>
                                     @endif
                                 </td>
-                                <td class="hidden-xs">
+                                <td>
                                     <div class="qty-btngroup">{{ waktu($item->tanggalOrder) }}</div>
                                 </td>
                                 <td>
@@ -234,7 +199,7 @@
                                 </td>
                                 <td>
                                     @if($item->status!=2 || $item->status!=3)
-                                    <a href="{{URL::to('konfirmasipreorder/'.$item->id)}}" class="" title="Konfirmasi Order"><span class="icon-cart"></span></a>
+                                    <a href="{{URL::to('konfirmasipreorder/'.$item->id)}}" title="Konfirmasi Order"><span class="icon-eye"></span></a>
                                     @else
                                     <span class="icon-checkmark"></span>
                                     @endif

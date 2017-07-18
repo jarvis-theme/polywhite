@@ -52,13 +52,7 @@
 				<!-- MAIN CONTENT -->
 				<div class="col-xs-12 col-sm-8 col-lg-9 main">
 					<div class="row">
-						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 section">
-							<!-- <div class="cat-image"><h1>Costumer Service</h1></div> -->
-							<!-- <small>Date: 12 Januari 2014 <span>&nbsp;&nbsp; Kategori: Book</span></small> -->
-						</div>
-						<div class="col-xs-12 col-sm-12 space20 visible-xs"></div>
-
-						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 desc-out">
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 desc-out mt40">
 							<div class="description">
 								<h3>Kebijakan Layanan</h3>
 								{{$service->tos}}

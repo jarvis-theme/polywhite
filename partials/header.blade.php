@@ -6,7 +6,7 @@
             <div class="row">
                 <!-- logo -->
                 <div class="col-xs-7 col-sm-7 logo-container">
-                    <strong class="logo ">
+                    <strong class="logo">
                     @if( logo_image_url() )
                         <a href="{{URL::to('home')}}">
                             {{HTML::image(logo_image_url(),'logo',array('style'=>'max-height: 100px'))}}
@@ -20,7 +20,7 @@
                 <div class="col-xs-5 col-sm-5 cart-container">
                     <div class="header-cart" style="width: 100%;">
                         <div class="search-cont">
-                            <form action="{{URL::to('search')}}" method="post">
+                            <form action="{{URL::to('search')}}" method="post" class="w100">
                                 <input id="search" type="text" name="search" class="query" placeholder="Search here">
                                 <button class="btn-search"><i class="icon-search"></i></button>
                             </form>
@@ -55,11 +55,9 @@
                     </div>
                 </div>
             </div>
-        
         </div>
     </div>
     <!-- /main header -->
-    <br>
     <!-- Navigation menu -->
     <div id="menu-container">
         <div class="container">

@@ -17,7 +17,7 @@
                 
                 <div class="col-xs-12 col-sm-6 col-lg-3 center-sm">
                     <div class="display-mode">
-                        <ul class="unstyled float-right"> Blogs </ul>
+                        <!-- <ul class="unstyled float-right"> Blogs </ul> -->
                     </div>
                 </div>
             </div>
@@ -60,19 +60,12 @@
                 <!-- MAIN CONTENT -->
                 <div class="col-xs-12 col-sm-8 col-lg-9 main">
                     <div class="row">
-                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 section">
-                            <div class="cat-image"><h1>Blog Kami</h1></div>
-                            <!-- <small>Date: 12 Januari 2014 <span>&nbsp;&nbsp; Kategori: Book</span></small> -->
-                        </div>
-                        
-                        <div class="col-xs-12 col-sm-12 space20 visible-xs"></div>
-
                         @foreach(list_blog(null, @$blog_category) as $key=>$value)
                         <a href="{{blog_url($value)}}">
-                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 desc-out">
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 desc-out {{$key==0?'mt40':''}}">
                                 <div class="description">
-                                    <div class="cat-image"><h2 class="blogtitle">{{$value->judul}}</h2></div>
-                                    <small>Date: {{waktuTgl($value->updated_at)}} <span>&nbsp;&nbsp;</span></small>
+                                    <div class="cat-image"><h2 class="blogtitle">{{ucwords($value->judul)}}</h2></div>
+                                    <small>Date: {{waktuTgl($value->created_at)}} <span>&nbsp;&nbsp;</span></small>
                                     <br><br>               
                                     {{ blogIndex($value->isi,250) }}
                                 </div>

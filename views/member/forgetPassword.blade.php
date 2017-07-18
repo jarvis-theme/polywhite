@@ -16,7 +16,7 @@
 			
 			<div class="col-xs-12 col-sm-6 col-lg-3 center-sm">
 				<div class="display-mode">
-					<ul class="unstyled float-right"> Member Area </ul>
+					<!-- <ul class="unstyled float-right top-title"> Member Area </ul> -->
 				</div>
 			</div>
 		</div>
@@ -31,11 +31,12 @@
 			<!-- SIDE BAR -->
 			<div class="col-xs-12 col-sm-4 col-lg-3 pull-right sidebar">
 				<!-- CHOOSE COLOR -->
+				{{--*/ $i=1 /*--}}
 				@foreach(vertical_banner() as $key=>$banner)
-				<div class="section  module-list-items">
+				<div class="module-list-items {{$key==0?'mt40':''}}">
 					<div class="cat-image">
 						<a href="{{URL::to($banner->url)}}">
-							{{HTML::image(banner_image_url($banner->gambar),'Info Promo',array('width'=>'100%'))}}
+							{{HTML::image(banner_image_url($banner->gambar),'Info Promo '.$i++,array('width'=>'100%', 'class'=>'mb10'))}}
 						</a>
 					</div>
 				</div>
@@ -48,24 +49,17 @@
 			<div class="col-xs-12 col-sm-8 col-lg-9 main">
 				<div class="section">
 					<form class="form-horizontal" action="{{URL::to('member/forgetpassword')}}" method="post">
-						<p>Silahkan masukan email anda untuk mengubah password lama anda.</p>
+						<p>Silakan masukan email anda untuk mengubah password lama anda.</p>
 						<h2>Lupa Password</h2>
 						<div class="content">
 							<table class="form">
 								<tbody>
 									<tr>
-										<td>E-Mail:</td>
-										<td>
-									  		<input type="text" placeholder="email" name="recoveryEmail" required>
-								  		</td>
+										<td><input type="text" placeholder="email" name="recoveryEmail" required></td>
+										<td><input type="submit" value="Reset Password" class="button"></td>
 									</tr>
 								</tbody>
 							</table>
-						</div>
-						<div class="buttons">
-							<div class="center">
-								<input type="submit" value="Reset Password" class="button">
-							</div>
 						</div>
 					</form>
 				</div>

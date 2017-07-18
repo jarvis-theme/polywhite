@@ -18,7 +18,7 @@
                 
                 <div class="col-xs-12 col-sm-6 col-lg-4 center-sm">
                     <div class="display-mode">
-                        <ul class="unstyled float-right"> {{ $nama }} </ul>
+                        <!-- <ul class="unstyled float-right"> {{ $nama }} </ul> -->
                     </div>
                 </div>
             </div>
@@ -32,22 +32,18 @@
             <div class="row">
                 <!-- SIDE BAR -->
                 <div class="col-xs-12 col-sm-4 col-lg-3 pull-left sidebar">
-                    <!-- CHOOSE COLOR -->
-                    <div class="section  module-list-items">
-                        <!-- <h4 class="section-title">Banner</h4> -->
-                        <div class="section-inner">
-                            @foreach(vertical_banner() as $key=>$banner)
-                            <div class="section">
-                                <div class="cat-image">
-                                    <a href="{{URL::to($banner->url)}}">
-                                        {{ HTML::image(banner_image_url($banner->gambar),'Info Promo',array('width'=>'100%')) }}
-                                    </a>
-                                </div>
-                            </div>
-                            @endforeach
+                    <!-- BANNER MODULE -->
+                    <div class="mt40">
+                        {{--*/ $i=1 /*--}}
+                        @foreach(vertical_banner() as $key=>$banner)
+                        <div class="mb10">
+                            <a href="{{URL::to($banner->url)}}">
+                                {{HTML::image(banner_image_url($banner->gambar), 'Info Promo '.$i++)}} 
+                            </a>
                         </div>
+                        @endforeach
                     </div>
-                    <!-- /CHOOSE COLOR -->
+                    <!-- /BANNER MODULE -->
                 </div>
                 <!-- /SIDE BAR -->
 
@@ -71,7 +67,7 @@
                     </div>
                     <div class="pagination-container">
                         <div class="row">
-                            <div class="col-xs-8 col-sm-8">{{ list_testimonial()->links() }}</div>
+                            <div class="col-xs-12 pad0">{{ list_testimonial()->links() }}</div>
                         </div>
                     </div>
                     <!-- Latest products -->

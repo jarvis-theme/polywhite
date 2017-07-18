@@ -18,7 +18,7 @@
                 
                 <div class="col-xs-12 col-sm-6 col-lg-4 center-sm">
                     <div class="display-mode">
-                        <ul class="unstyled float-right"> Register </ul>
+                        <!-- <ul class="unstyled float-right top-title"> Register </ul> -->
                     </div>
                 </div>
             </div>
@@ -32,22 +32,18 @@
             <div class="row">
                 <!-- SIDE BAR -->
                 <div class="col-xs-12 col-sm-4 col-lg-3 pull-right sidebar">
-                    <!-- CHOOSE COLOR -->
-                    <div class="section  module-list-items">
-                        <!-- <h4 class="section-title">Banner</h4> -->
-                        <div class="section-inner">
-                            @foreach(vertical_banner() as $key=>$banner)
-                            <div class="section">
-                                <div class="cat-image">
-                                    <a href="{{URL::to($banner->url)}}">
-                                        {{HTML::image(banner_image_url($banner->gambar),'Info Promo',array('width'=>'100%'))}}
-                                    </a>
-                                </div>
-                            </div>
-                            @endforeach
+                    <!-- Banner -->
+                    <div class="mt20">
+                        {{--*/ $i=1 /*--}}
+                        @foreach(vertical_banner() as $key=>$banner)
+                        <div class="mb10">
+                            <a href="{{URL::to($banner->url)}}">
+                                {{HTML::image(banner_image_url($banner->gambar),'Info Promo '.$i++)}}
+                            </a>
                         </div>
+                        @endforeach
                     </div>
-                    <!-- /CHOOSE COLOR -->
+                    <!-- /Banner -->
                 </div>
                 <!-- /SIDE BAR -->
 
@@ -66,7 +62,7 @@
                                         </tr>
                                         <tr>
                                             <td><span class="required">*</span> E-Mail:</td>
-                                            <td><input class="inputform" type="text" name="email" value="{{Input::old('email')}}" required></td>
+                                            <td><input class="inputform" type="email" name="email" value="{{Input::old('email')}}" required></td>
                                         </tr>
                                         <tr>
                                             <td><span class="required">*</span> Telepon:</td>
@@ -122,12 +118,11 @@
                                         </tr>
                                         <tr>
                                             <td><span class="required">*</span> Captcha:</td>
-                                            <td class="inputform"><input type="text" name="captcha" placeholder="Masukan text berikut" required ></td>
-                                            <td>{{ HTML::image(Captcha::img(), 'Captcha image') }}</td>
+                                            <td class="inputform">{{ HTML::image(Captcha::img(), 'Captcha image') }}<input type="text" name="captcha" placeholder="Masukan kode captcha" required ></td>
                                         </tr>
                                         <tr>
                                             <td></td>
-                                            <td colspan="2"><input type="checkbox" required name="readme" value="1">&nbsp;&nbsp;Saya telah membaca dan menyetujui <a class="colorbox cboxElement" href="{{URL::to('service')}}" alt="Privacy Policy" target="_blank"><b>Syarat & Ketentuan</b></a></td>
+                                            <td colspan="2"><input type="checkbox" required name="readme" value="1" checked>&nbsp;&nbsp;Saya telah membaca dan menyetujui <a class="colorbox cboxElement" href="{{URL::to('service')}}" alt="Privacy Policy" target="_blank"><b>Syarat & Ketentuan</b></a></td>
                                         </tr>
                                     </tbody>
                                 </table>
