@@ -65,14 +65,14 @@
                 <!-- main menu -->
                 <ul class="main-menu menu visible-lg">
                     <li class="active annonce"><a href="{{URL::to('/')}}"><i class="icon-home2"></i></a></li>
-                    @if(count(category_menu()) > 0)
-                    @foreach(category_menu() as $key=>$menu)
+                    @if(count(list_category ()) > 0)
+                    @foreach(list_category () as $key=>$menu)
                     <li class="annonce">
                         @if($menu->parent=='0')
                         <a href="{{category_url($menu)}}">{{$menu->nama}}</a>
                             @if(count($menu->anak) > 0)
                             <ul class="sub_menu">
-                                <!--SUbmenu Starts-->
+                                <!--Submenu Starts-->
                                 @foreach($menu->anak as $key1=>$submenu)
                                     @if($submenu->parent==$menu->id)
                                     <li><a href="{{category_url($submenu)}}">{{$submenu->nama}}</a>
@@ -88,7 +88,7 @@
                                 @endforeach
                             </ul>
                             @endif
-                        <!--SUbmenu Ends-->
+                        <!--Submenu Ends-->
                         @endif
                     </li>
                     @endforeach
@@ -124,15 +124,11 @@
                         </ul>
                     </div>
                     <!-- /dl-menuwrapper -->
-                
                 </div>
                 <!-- /mobile main menu -->
-                
             </div>
-            
         </div>
     </div>
     <!-- /Navigation menu -->
-    
 </div>
 <!-- /SITE HEADER -->
