@@ -164,7 +164,7 @@
                                                 @endif
                                                 
                                                 <div class="clearfix">
-                                                    Jumlah : <input type="text" class="qty compact" name="qty" value="1" size="2" id="qty-input">
+                                                    Jumlah : <input type="number" class="qty compact" name="qty" value="1" pattern="[0-9]" title="jumlah" size="2" id="qty-input">
                                                 </div>
                                                 
                                                 <div class="space30 clearfix"></div>
